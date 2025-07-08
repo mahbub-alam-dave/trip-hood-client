@@ -4,7 +4,6 @@ import { Outlet } from 'react-router';
 import Footer from '../components/sharedComponents/Footer';
 
 const Root = () => {
-    console.log("this is from root")
     return (
         <div className='bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)]'>
             <Navbar />

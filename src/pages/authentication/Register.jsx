@@ -5,11 +5,15 @@ import { FaGoogle, FaUserCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import axios from "axios";
+import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
+
 
 const Register = () => {
   const { registerUser, googleSignIn, updateUser } = useContext(ContextValues);
   const [imagePreview, setImagePreview] = useState(null);
   const [image, setImage] = useState()
+
+  const axiosApi = useSimpleAxios();
   const navigate = useNavigate();
 
   const {
@@ -29,7 +33,7 @@ const Register = () => {
 
   try {
     const res = await axios.post(
-      `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_upload_key}`,
+      `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgbb_url}`,
       formData
     );
     setImage(res.data.data.display_url);
@@ -43,9 +47,11 @@ const Register = () => {
   }
 };
 
+console.log(image)
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     const { name, email, password, } = data;
+
 
     const userData = {
       name,
@@ -59,12 +65,16 @@ const Register = () => {
     console.log(data)
 
     registerUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        updateUser(user, {
-          displayName: name,
-          photoURL: imagePreview || "",
-        });
+      .then(async() => {
+        // const user = result.user;
+        updateUser({displayName: name, photoURL: image}
+          // add user info to data base
+        );
+        const res = await axiosApi.post(`${import.meta.env.VITE_app_url}/users`, userData)
+
+        if(res.data.insertedId) {
+          console.log('user data updated', res.data)
+        }
 
         Swal.fire({
           icon: "success",
@@ -116,7 +126,7 @@ const Register = () => {
       <div className="flex justify-center mb-6">
         <label htmlFor="photo" className="cursor-pointer relative">
           {imagePreview ? (
-            <img src={imagePreview} alt="Preview" className="w-24 h-24 rounded-full object-cover border-2 border-[var(--color-primary)]" />
+            <img src={image} alt="Preview" className="w-24 h-24 rounded-full object-cover border-2 border-[var(--color-primary)]" />
           ) : (
             <div className="w-24 h-24 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-500">
               <FaUserCircle size={48} />

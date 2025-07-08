@@ -9,8 +9,6 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, signOutUser } = useContext(ContextValues);
 
-  console.log(user)
-
   const handleLogout = () => {
     signOutUser()
     .then(() => {
