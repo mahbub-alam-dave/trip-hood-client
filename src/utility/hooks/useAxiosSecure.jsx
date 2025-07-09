@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
 
 import axios from "axios";
-import { ContextValues } from '../contexts/ContextValue';
 
 const axiosSecure = axios.create({
     baseURL: `${import.meta.env.VITE_app_url}`
@@ -9,10 +7,14 @@ const axiosSecure = axios.create({
 
 const useAxiosSecure = () => {
 
-    const {user} = useContext(ContextValues)
-
+    
     axiosSecure.interceptors.request.use(config => {
-        config.headers.Authorization = `Bearer ${user.accessToken}`
+        const token = localStorage.getItem("access-token")
+
+        if(token) {
+            config.headers.Authorization = `Bearer ${token}`
+        }
+        return config
     })
 
     return axiosSecure

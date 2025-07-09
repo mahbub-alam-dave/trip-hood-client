@@ -1,9 +1,12 @@
 import React from 'react';
+import Banner from '../../components/general/Banner';
+import Overview from '../../components/general/Overview';
 
 const Home = () => {
     return (
         <div>
-            <h2 className='text-black'>This is navbar</h2> 
+            <Banner />
+            <Overview />
         </div>
     );
 };

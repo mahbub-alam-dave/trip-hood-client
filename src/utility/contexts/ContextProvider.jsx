@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ContextValues } from './ContextValue';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.config';
+import useAxiosSecure from '../hooks/useAxiosSecure'
 
 const provider = new GoogleAuthProvider()
 
@@ -9,6 +10,7 @@ const ContextProvider = ({children}) => {
 
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
+    const axiosSecure = useAxiosSecure()
 
 
 const [mode, setMode] = useState(localStorage.getItem("theme") === "dark")
@@ -51,16 +53,28 @@ const [mode, setMode] = useState(localStorage.getItem("theme") === "dark")
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, user => {
-            if(user) {
-                setUser(user)
-            }
+            setUser(user)
             setLoading(false)
-
+            
+            if(user) {
+                axiosSecure.post(`/jwt`, {email: user.email})
+                .then(res => {
+                    localStorage.setItem("access-token", res.data.token)
+                })
+                .catch((err) => {
+                    console.log('Failed to get JWT token', err)
+                     localStorage.removeItem("access-token");
+                })
+            }
+            else {
+        // User logged out — remove token
+        localStorage.removeItem("access-token");
+      }
             return () => {
                 unSubscribe()
             }
         })
-    },[])
+    })
 
     console.log(user)
 
@@ -75,6 +89,7 @@ const [mode, setMode] = useState(localStorage.getItem("theme") === "dark")
         setUser,
         setMode,
         mode,
+        loading,
     }
 
     return (
