@@ -1,16 +1,17 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import { FaGoogle, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import axios from "axios";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
+import GoogleSignIn from "../../components/sharedComponents/GoogleSignIn";
 
 
 const Register = () => {
-  const { registerUser, googleSignIn, updateUser } = useContext(ContextValues);
-  const [imagePreview, setImagePreview] = useState(null);
+  const { registerUser, updateUser } = useContext(ContextValues);
+  // const [imagePreview, setImagePreview] = useState(null);
   const [image, setImage] = useState()
 
   const axiosApi = useSimpleAxios();
@@ -47,11 +48,9 @@ const Register = () => {
   }
 };
 
-console.log(image)
 
   const onSubmit = async(data) => {
-    const { name, email, password, } = data;
-
+    const { name, email, password } = data;
 
     const userData = {
       name,
@@ -62,7 +61,6 @@ console.log(image)
 
     }
 
-    console.log(data)
 
     registerUser(email, password)
       .then(async() => {
@@ -96,39 +94,21 @@ console.log(image)
       });
   };
 
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Logged in with Google!",
-          timer: 2000,
-          showConfirmButton: false,
-        });
-        navigate("/");
-      })
-      .catch((error) =>
-        Swal.fire({
-          icon: "error",
-          title: "Google Sign-In Failed",
-          text: error.message,
-        })
-      );
-  };
+  
 
   return (
-    <div className="max-w-md mx-auto my-16 p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-6 text-[var(--color-primary)] dark:text-[var(--color-primary-two)]">
-        Register to Freindy Tour
+    <div className="max-w-md mx-auto my-16 p-8 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold text-center mb-6 ">
+        Register to Tour Hood
       </h2>
 
       {/* Profile Image */}
       <div className="flex justify-center mb-6">
         <label htmlFor="photo" className="cursor-pointer relative">
-          {imagePreview ? (
-            <img src={image} alt="Preview" className="w-24 h-24 rounded-full object-cover border-2 border-[var(--color-primary)]" />
+          {image ? (
+            <img src={image} alt="Preview" className="w-20 h-20 rounded-full object-cover border-2 border-[var(--color-primary)]" />
           ) : (
-            <div className="w-24 h-24 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-500">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-500">
               <FaUserCircle size={48} />
             </div>
           )}
@@ -150,9 +130,9 @@ console.log(image)
             type="text"
             placeholder="Full Name"
             {...register("name", { required: "Name is required" })}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
+            className="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
           />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          {errors.name && <p className="text-[var(--color-accent)] dark:text-[var(--color-accent-dark)]  text-sm mt-1">{errors.name.message}</p>}
         </div>
 
         {/* Email */}
@@ -167,9 +147,9 @@ console.log(image)
                 message: "Invalid email format",
               },
             })}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
+            className="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && <p className="text-[var(--color-accent)] dark:text-[var(--color-accent-dark)]  text-sm mt-1">{errors.email.message}</p>}
         </div>
 
         {/* Password */}
@@ -188,15 +168,15 @@ console.log(image)
     message: "Password must have uppercase, lowercase, and a special character",
   }
 })}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
+            className="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
           />
-          {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+          {errors.password && <p className="text-[var(--color-accent)] dark:text-[var(--color-accent-dark)]  text-sm mt-1">{errors.password.message}</p>}
         </div>
 
         {/* Register Button */}
         <button
           type="submit"
-          className="w-full py-3 rounded-lg bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-white font-semibold hover:opacity-90 transition"
+          className="w-full py-3 rounded-lg bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] font-semibold hover:opacity-90 transition"
         >
           Register
         </button>
@@ -210,21 +190,19 @@ console.log(image)
       </div>
 
       {/* Google Sign-In */}
-      <button
-        onClick={handleGoogleSignIn}
-        className="w-full flex items-center justify-center gap-3 py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-      >
-        <FaGoogle />
-        Sign in with Google
-      </button>
+      <GoogleSignIn />
 
       {/* Login link */}
       <p className="text-center text-sm text-gray-600 dark:text-gray-300 mt-6">
         Already have an account?{" "}
-        <Link to="/login" className="font-semibold text-[var(--color-primary)] dark:text-[var(--color-primary-two)] hover:underline">
+        <Link
+          to="/login"
+          className="font-semibold text-[var(--color-primary)] dark:text-[var(--color-primary-two)] hover:underline"
+        >
           Login here
         </Link>
       </p>
+      
     </div>
   );
 };

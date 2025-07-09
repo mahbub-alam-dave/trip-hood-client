@@ -60,7 +60,7 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <NavLink to="/login" className="px-6 py-3 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] rounded-lg hover:bg-blue-600 transition">Login</NavLink>
+            <NavLink to="/login" className="px-6 py-3 font-semibold bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] rounded-lg hover:bg-blue-600 transition">Login</NavLink>
           )}
             <ToggleIcon />
         </nav>
@@ -82,7 +82,7 @@ const Navbar = () => {
 
             <div className="flex items-start">
             {user ? (
-              <>
+              <div className="flex flex-col">
                 <div className="flex items-center gap-3 mt-4">
                   <img src={user.photoURL || "/default-avatar.png"} alt="User" className="w-12 h-12 rounded-full border border-[var(--color-primary)]" />
                   <div>
@@ -93,10 +93,10 @@ const Navbar = () => {
                 <NavLink to="/dashboard" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 mt-3 hover:text-[var(--color-primary)]">
                   <FaThLarge /> Dashboard
                 </NavLink>
-                <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-red-600 hover:text-red-800">
+                <button onClick={handleLogout} className="flex items-center mt-3 gap-2 text-sm text-[var(--color-accent)] dark:text-[var(--color-accent-dark)] hover:text-red-800">
                   <FaSignOutAlt /> Logout
                 </button>
-              </>
+              </div>
             ) : (
               <NavLink to="/login" onClick={() => setMenuOpen(false)} className="px-6 py-3 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] rounded-lg mt-3 w-full text-center">Login</NavLink>
             )}
