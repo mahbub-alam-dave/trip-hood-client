@@ -19,7 +19,7 @@ const Banner = () => {
       {/* Content */}
       <div className="relative text-center text-[var(--color-text-primary-two)] px-6 max-w-4xl">
         <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-[var(--color-primary-two)] drop-shadow-lg">
-          Explore the World with Tour Hood
+          Explore the World with Trip Hood
         </h1>
         <p className="text-lg md:text-xl text-[var(--color-text-primary-two)] mb-8">
           “Adventure awaits — let your journey begin today.”

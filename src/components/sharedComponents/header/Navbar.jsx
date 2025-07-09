@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import { FaBars, FaTimes, FaUserCircle, FaThLarge, FaSignOutAlt } from "react-icons/fa";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import ToggleIcon from "./ToggleIcon";
+import avatar from '../../../assets/avatar.png'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,9 +39,9 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           {user ? (
-            <div className="relative">
+            <div className="relative flex justify-center">
               <button onClick={() => setDropdownOpen(!dropdownOpen)}>
-                <img src={user.photoURL || "/default-avatar.png"} alt="User" className="w-12 h-12 rounded-full border border-[var(--color-primary)] object-cover" />
+                <img src={user.photoURL || avatar} alt="User" className="w-10 h-10 rounded-full  object-cover" />
               </button>
 
               {dropdownOpen && (
@@ -84,7 +85,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex flex-col">
                 <div className="flex items-center gap-3 mt-4">
-                  <img src={user.photoURL || "/default-avatar.png"} alt="User" className="w-12 h-12 rounded-full border border-[var(--color-primary)]" />
+                  <img src={user.photoURL || avatar} alt="User" className="w-12 h-12 rounded-full" />
                   <div>
                     <p className="font-semibold">{user.displayName}</p>
                     <p className="text-xs text-gray-500">{user.email}</p>

@@ -6,35 +6,35 @@ const Overview = () => {
     "https://i.ibb.co/VcxtGD8z/img-4.jpg",
   ];
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Title */}
-      <h2 className="text-4xl font-bold text-center mb-12 text-[var(--color-primary)] dark:text-[var(--color-primary-two)]">
-        Why Choose Tour Hood?
+      <h2 className="text-4xl font-bold text-center mb-16 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+        Why Choose Trip Hood?
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-12 items-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         {/* Left Content */}
-        <div className="space-y-8">
+        <div className="space-y-8 ">
           {/* About Purpose */}
           <div>
-            <h3 className="text-2xl font-semibold mb-2 text-[var(--color-primary)] dark:text-[var(--color-primary-two)]">Who We Are</h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Tour Hood is your personal travel companion — dedicated to connecting travelers with unforgettable experiences. Whether you're a solo explorer or group adventurer, we help you discover the hidden gems of the world.
+            <h3 className="text-2xl font-semibold mb-2">Who We Are</h3>
+            <p className=" leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
+              Trip Hood is your personal travel companion — dedicated to connecting travelers with unforgettable experiences. Whether you're a solo explorer or group adventurer, we help you discover the hidden gems of the world.
             </p>
           </div>
 
           {/* What We Offer */}
           <div>
-            <h3 className="text-2xl font-semibold mb-2 text-[var(--color-primary)] dark:text-[var(--color-primary-two)]">What We Offer</h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            <h3 className="text-2xl font-semibold mb-2 ">What We Offer</h3>
+            <p className="leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
               From curated tour packages and personalized itineraries to community travel forums and travel resources — we offer everything you need to plan and enjoy your next adventure.
             </p>
           </div>
 
           {/* Our Services */}
           <div>
-            <h3 className="text-2xl font-semibold mb-2 text-[var(--color-primary)] dark:text-[var(--color-primary-two)]">Our Services</h3>
-            <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-2">
+            <h3 className="text-2xl font-semibold mb-2">Our Services</h3>
+            <ul className="list-disc pl-5 text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] space-y-2">
               <li>Hand-picked tour packages for every budget</li>
               <li>24/7 travel assistance and support</li>
               <li>Local guide recommendations & reviews</li>

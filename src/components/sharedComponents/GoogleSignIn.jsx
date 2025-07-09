@@ -15,7 +15,7 @@ const GoogleSignIn = () => {
       .then(async(result) => {
         // save user info to the database
         const userData = {
-          name: result.user?.displayName || "annonymous",
+          name: result.user?.displayName || "anonymous",
           email: result.user?.email,
           role: "tourist",
           createdAt: new Date().toISOString(),
