@@ -4,6 +4,7 @@ import Home from "../pages/generalPages/Home";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import ForgetPassword from "../pages/authentication/ForgetPassword";
+import PackageDetails from "../pages/generalPages/PackageDetails";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: 'forgot-password',
                 element: <ForgetPassword />
+            },
+            {
+                path: 'packages/:id',
+                element: <PackageDetails />
             }
         ]
     }

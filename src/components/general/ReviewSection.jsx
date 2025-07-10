@@ -1,9 +1,9 @@
 import React from 'react';
 
 const testimonials = [
-  { _id: 1, name: "Tanvir", photo: "https://...", destination: "Cox's Bazar", text: "Had an unforgettable family trip." },
-  { _id: 2, name: "Samia", photo: "https://...", destination: "Sajek", text: "Sea of clouds, beautiful experience!" },
-  { _id: 2, name: "Samia", photo: "https://...", destination: "Sajek", text: "Sea of clouds, beautiful experience!" },
+  { _id: 1212, name: "Tanvir", photo: "https://...", destination: "Cox's Bazar", text: "Had an unforgettable family trip." },
+  { _id: 211223, name: "Samia", photo: "https://...", destination: "Sajek", text: "Sea of clouds, beautiful experience!" },
+  { _id: 212313, name: "Samia", photo: "https://...", destination: "Sajek", text: "Sea of clouds, beautiful experience!" },
   // etc...
 ];
 
