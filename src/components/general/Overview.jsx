@@ -8,7 +8,7 @@ const Overview = () => {
   return (
     <section className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Title */}
-      <h2 className="text-4xl font-bold text-center mb-16 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-16 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Why Choose Trip Hood?
       </h2>
 

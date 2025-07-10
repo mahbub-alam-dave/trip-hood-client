@@ -15,20 +15,20 @@ const TouristStoryCard = ({ story }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg flex flex-col transition hover:scale-105">
+    <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-xl overflow-hidden shadow-lg flex flex-col transition hover:scale-105">
       <img
         src={story.image}
         alt={story.title}
         className="h-48 w-full object-cover"
       />
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-lg font-semibold  mb-1 line-clamp-2">
+        <h3 className="text-lg font-semibold mb-1 line-clamp-2">
           {story.title}
         </h3>
         <p className="text-xs text-gray-500 mb-2">
           by {story.author} • {story.date}
         </p>
-        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 flex-grow">
+        <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] line-clamp-3 flex-grow">
           {story.description}
         </p>
 

@@ -7,13 +7,13 @@ const destinations = [
 ];
 const TopDestinations = () => {
     return (
-<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
-  <h2 className="text-3xl font-bold text-center mb-8 text-[var(--color-primary)] dark:text-[var(--color-primary-two)]">Top Tourist Destinations</h2>
+<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Top Tourist Destinations</h2>
   <div className="flex overflow-x-auto gap-4">
   {destinations.map(dest => (
     <div key={dest._id} className="min-w-[300px] w-full rounded-xl overflow-hidden relative">
-      <img src={dest.image} className="h-64 w-full object-cover" />
-      <div className="absolute bottom-0 left-0 w-full bg-black/20 p-2 text-white">
+      <img src={dest.image} className="h-68 w-full object-cover" />
+      <div className="absolute bottom-0 left-0 w-full bg-black/25 p-2 text-[var(--color-text-primary-two)]">
         <h3 className="text-lg font-bold">{dest.name}</h3>
         <p className="text-xs">{dest.tagline}</p>
       </div>

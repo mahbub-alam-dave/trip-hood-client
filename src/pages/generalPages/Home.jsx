@@ -5,6 +5,9 @@ import TabsSection from '../../components/general/TabSection';
 import TouristStoryComponent from '../../components/general/TouristStoryComponent';
 import TopDestinations from '../../components/general/TopDestinations';
 import ReviewSection from '../../components/general/ReviewSection';
+import DestinationsMap from '../../components/general/DestinationsMap';
+import AppAndNewsletterCTA from '../../components/general/AppAndNewsletterCTA';
+import PartnersShowcase from '../../components/general/PartnersShowcase';
 
 const Home = () => {
     return (
@@ -19,6 +22,11 @@ const Home = () => {
             <TopDestinations />
             {/* reviews and testimonials */}
             <ReviewSection />
+            {/* destination map */}
+            <DestinationsMap />
+            {/* <AppAndNewsletterCTA /> */}
+            {/* partners showcase */}
+            <PartnersShowcase />
         </div>
     );
 };
