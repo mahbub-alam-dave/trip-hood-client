@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import { FaSearch } from "react-icons/fa";
-import banner from '../../assets/sea-beach-banner.jpg'
 
 const Banner = () => {
   return (

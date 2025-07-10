@@ -6,7 +6,7 @@ const Overview = () => {
     "https://i.ibb.co/VcxtGD8z/img-4.jpg",
   ];
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Title */}
       <h2 className="text-4xl font-bold text-center mb-16 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Why Choose Trip Hood?

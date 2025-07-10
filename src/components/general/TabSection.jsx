@@ -1,6 +1,6 @@
 import { Tab } from "@headlessui/react";
 import TourPackagesTab from "./TourPackagesTab";
-// import TourGuidesTab from "./TourGuidesTab";
+import TourGuidesTab from "./TourGuidesTab";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -8,7 +8,7 @@ function classNames(...classes) {
 
 const TabsSection = () => {
   return (
-    <div className="max-w-7xl mx-auto py-16 px-6">
+    <div className="max-w-7xl mx-auto pt-24 px-6">
       <Tab.Group>
         <Tab.List className="flex space-x-2 mb-8">
           <Tab
@@ -42,7 +42,7 @@ const TabsSection = () => {
             <TourPackagesTab />
           </Tab.Panel>
           <Tab.Panel>
-            {/* <TourGuidesTab /> */}
+            <TourGuidesTab />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
@@ -67,4 +67,9 @@ https://i.ibb.co/wrd7Wk5J/srimangal-four.jpg
 https://i.ibb.co/YFm5HhPv/srimangal-one.jpg
 https://i.ibb.co/5fG1zPn/srimangal-three.jpg
 https://i.ibb.co/TDxxHQ0r/srimangal-two.jpg
+
+https://i.ibb.co/KzQxRCWs/saint-martin-two.jpg
+https://i.ibb.co/p6BhwX1z/saint-martin-one.jpg
+https://i.ibb.co/nsVZr5cf/bandarban-two.jpg
+https://i.ibb.co/cK7PgSBF/bandarban-one.jpg
 */
