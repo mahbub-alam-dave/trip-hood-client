@@ -6,6 +6,7 @@ import Register from "../pages/authentication/Register";
 import ForgetPassword from "../pages/authentication/ForgetPassword";
 import PackageDetails from "../pages/generalPages/PackageDetails";
 import GuideDetails from "../pages/generalPages/GuideDetails";
+import TripsPackage from "../pages/generalPages/TripsPackage";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: 'guide/:id',
                 element: <GuideDetails />
+            },
+            {
+                path: 'trips',
+                element: <TripsPackage />
             }
         ]
     }
