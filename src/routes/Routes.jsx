@@ -7,6 +7,7 @@ import ForgetPassword from "../pages/authentication/ForgetPassword";
 import PackageDetails from "../pages/generalPages/PackageDetails";
 import GuideDetails from "../pages/generalPages/GuideDetails";
 import TripsPackage from "../pages/generalPages/TripsPackage";
+import AboutUsPage from "../pages/generalPages/AboutUsPage";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: 'trips',
                 element: <TripsPackage />
+            },
+            {
+                path: 'about',
+                element: <AboutUsPage />
             }
         ]
     }
