@@ -8,6 +8,7 @@ import PackageDetails from "../pages/generalPages/PackageDetails";
 import GuideDetails from "../pages/generalPages/GuideDetails";
 import TripsPackage from "../pages/generalPages/TripsPackage";
 import AboutUsPage from "../pages/generalPages/AboutUsPage";
+import CommunityPage from "../pages/generalPages/CommunityPage";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: 'about',
                 element: <AboutUsPage />
+            },
+            {
+                path: 'community',
+                element: <CommunityPage />
             }
         ]
     }
