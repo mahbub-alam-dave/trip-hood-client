@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -9,6 +9,8 @@ const GoogleSignIn = () => {
   const navigate = useNavigate();
   const simpleAxios = useSimpleAxios()
   const { googleSignIn } = useContext(ContextValues);
+
+  const location = useLocation()
 
   const handleGoogleSignIn = () => {
     googleSignIn()
@@ -32,7 +34,7 @@ const GoogleSignIn = () => {
           timer: 2000,
           showConfirmButton: false,
         });
-        navigate("/");
+        navigate(location.state || "/");
       })
       .catch((error) =>
         Swal.fire({

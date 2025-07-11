@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useContext } from "react";
@@ -11,6 +11,9 @@ const Login = () => {
   const { loginUser } = useContext(ContextValues);
   const navigate = useNavigate();
   const simpleAxios = useSimpleAxios()
+
+  const location = useLocation()
+
 
   const {
     register,
@@ -45,7 +48,7 @@ const Login = () => {
           showConfirmButton: false,
         });
         reset();
-        navigate("/");
+        navigate(location.state || '/');
       })
       .catch((error) =>
         Swal.fire({

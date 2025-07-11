@@ -55,9 +55,11 @@ const TourGuidesTab = () => {
     ))}
   </div>
   <p className="text-xs text-gray-400 mt-2">⭐ {guide.rating} ({guide.reviews} reviews)</p>
+  <Link to={`/guide/${guide._id}`}>
   <button className="mt-4 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] hover:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] px-4 py-1 rounded-2xl text-base cursor-pointer">
     View Details
   </button>
+  </Link>
         </motion.div>
       ))}
     </div>
