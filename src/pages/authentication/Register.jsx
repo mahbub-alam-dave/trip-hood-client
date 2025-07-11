@@ -7,6 +7,7 @@ import { ContextValues } from "../../utility/contexts/ContextValue";
 import axios from "axios";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
 import GoogleSignIn from "../../components/sharedComponents/GoogleSignIn";
+import avatar from '../../assets/avatar.png'
 
 
 const Register = () => {
@@ -65,7 +66,8 @@ const Register = () => {
     registerUser(email, password)
       .then(async() => {
         // const user = result.user;
-        updateUser({displayName: name, photoURL: image}
+        const userImage = image ? image : avatar
+        updateUser({displayName: name, photoURL: userImage}
           // add user info to data base
         );
         const res = await axiosApi.post(`${import.meta.env.VITE_app_url}/users`, userData)

@@ -26,7 +26,6 @@ const TouristStoryComponent = () => {
     queryFn: fetchStories
   })
 
-  console.log(stories)
 
 if (isLoading) return <div>Loading tour guides...</div>;
   if (isError) return <div>Error loading guides</div>;

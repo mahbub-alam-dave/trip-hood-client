@@ -87,7 +87,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             {...register("password", { required: "Password is required" })}
-            className="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)]focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
+            className="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] dark:focus:ring-[var(--color-primary-two)]"
           />
           {errors.password && <p className="text-[var(--color-accent)] dark:text-[var(--color-accent-dark)]  text-sm mt-1">{errors.password.message}</p>}
         </div>

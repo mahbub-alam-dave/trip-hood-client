@@ -24,7 +24,6 @@ const TourPackagesTab = () => {
     queryFn: fetchPackages,
   });
 
-  console.log(packages)
 
   if (isLoading) return <div>Loading tour packages...</div>;
   if (isError) return <div>Error loading packages</div>;

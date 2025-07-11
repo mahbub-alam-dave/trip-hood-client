@@ -76,7 +76,7 @@ const [mode, setMode] = useState(localStorage.getItem("theme") === "dark")
         })
     })
 
-    console.log(user)
+    // console.log(user)
 
 
     const value = {
