@@ -9,7 +9,7 @@ const DashboardLayout = () => {
 
   const navLinks = [
     { to: "/dashboard/profile", label: "Manage Profile", icon: <FaUserCircle /> },
-    { to: "/dashboard/bookings", label: "My Bookings", icon: <FaBookmark /> },
+    { to: "/dashboard/my-bookings", label: "My Bookings", icon: <FaBookmark /> },
     { to: "/dashboard/manage-stories", label: "Manage Stories", icon: <FaBookOpen /> },
     { to: "/dashboard/add-story", label: "Add Story", icon: <FaPlusCircle /> },
     { to: "/dashboard/join-as-guide", label: "Join as Tour Guide", icon: <RiGuideLine /> },
