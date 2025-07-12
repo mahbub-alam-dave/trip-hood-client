@@ -47,8 +47,8 @@ const CommunityPage = () => {
               </h2>
 
               <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
-                {story.description.length > 100
-                  ? `${story.description.slice(0, 100)}...`
+                {story.description.length > 110
+                  ? `${story.description.slice(0, 110)}...`
                   : story.description}
               </p>
 

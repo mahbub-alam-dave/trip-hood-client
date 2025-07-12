@@ -4,6 +4,7 @@ import { ContextValues } from "../../utility/contexts/ContextValue";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
+import avatar from '../../assets/avatar.png'
 
 const GoogleSignIn = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const GoogleSignIn = () => {
         const userData = {
           name: result.user?.displayName || "anonymous",
           email: result.user?.email,
+          image: result?.user?.photoURL || avatar,
           role: "tourist",
           createdAt: new Date().toISOString(),
           lastSignedIn: new Date().toISOString(),

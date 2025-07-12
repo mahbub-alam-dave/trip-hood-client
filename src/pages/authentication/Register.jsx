@@ -56,6 +56,7 @@ const Register = () => {
     const userData = {
       name,
       email,
+      photo: image,
       role: "tourist", 
       createdAt: new Date().toISOString(),
       lastSignedIn: new Date().toISOString(),

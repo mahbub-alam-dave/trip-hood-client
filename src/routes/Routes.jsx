@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Root from "../layouts/Root";
+import PrivateRoutes from '../routes/PrivateRoutes'
 import Home from "../pages/generalPages/Home";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
@@ -9,6 +10,10 @@ import GuideDetails from "../pages/generalPages/GuideDetails";
 import TripsPackage from "../pages/generalPages/TripsPackage";
 import AboutUsPage from "../pages/generalPages/AboutUsPage";
 import CommunityPage from "../pages/generalPages/CommunityPage";
+import DashboardLayout from "../layouts/DashboardLayout";
+import MyBookings from "../pages/dashboard/tourists/MyBookings";
+import Managestories from "../pages/dashboard/tourists/Managestories";
+import ManageProfile from "../pages/dashboard/common/ManageProfile";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +55,24 @@ export const router = createBrowserRouter([
             {
                 path: 'community',
                 element: <CommunityPage />
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivateRoutes> <DashboardLayout /> </PrivateRoutes>,
+        children: [
+            {
+                path: 'profile',
+                element: <ManageProfile />
+            },
+            {
+                path: "my-bookings",
+                element: <MyBookings />
+            },
+            {
+                path: "manage-stories",
+                element: <Managestories />
             }
         ]
     }
