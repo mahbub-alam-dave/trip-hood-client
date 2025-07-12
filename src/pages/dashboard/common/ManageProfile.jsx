@@ -21,10 +21,11 @@ const ManageProfile = () => {
   const queryClient = useQueryClient();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [image, setImage] = useState()
+  // const [errors, setErrors] = useState()
   
 
 //   fetch user data
-const { data: userData = {}, isLoading } = useQuery({
+const { data: userData = {}, isLoading, } = useQuery({
   queryKey: ["user-data", user?.email],
   queryFn: async () => {
     const res = await axiosSecure.get(`/users/by-email/${user.email}`);
@@ -48,7 +49,7 @@ const { data: userData = {}, isLoading } = useQuery({
   });
 
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   // Open modal and preload form data
   const openModal = () => {
@@ -58,12 +59,16 @@ const { data: userData = {}, isLoading } = useQuery({
       role: userData?.role || "",
       age: guideData?.age || "",
       phone: guideData?.phone || "",
+      experience: guideData?.experience || "",
+      nationalId: guideData?.nationalId || "",
       coverageArea: guideData?.coverageArea?.join(", ") || "",
       expertise: guideData?.expertise?.join(", ") || "",
+      language: guideData?.language,
       description: guideData?.description || "",
     };
     reset(formValues);
     setModalIsOpen(true);
+    setImage(userData.photo)
   };
 
   // Update Mutation
@@ -158,11 +163,10 @@ const onSubmit = (formData) => {
     photo: finalImage
   };
 
-  console.log(formData)
-
   if (userData?.role === "tour_guide") {
     cleanData.coverageArea = formData.coverageArea.split(",").map((item) => item.trim());
     cleanData.expertise = formData.expertise.split(",").map((item) => item.trim());
+    cleanData.language = formData.language.split(",").map((item) => item.trim());
   }
 
   updateProfileMutation.mutate(cleanData);
@@ -217,8 +221,11 @@ const handleImageChange = async (e) => {
           <>
             <p><strong>Age:</strong> {guideData.age}</p>
             <p><strong>Phone:</strong> {guideData.phone}</p>
+            <p><strong>NationId:</strong> {guideData.nationalId}</p>
             <p><strong>Coverage Area:</strong> {guideData.coverageArea?.join(", ")}</p>
+            <p><strong>Experience:</strong> {guideData.experience} years</p>
             <p><strong>Expertise:</strong> {guideData.expertise?.join(", ")}</p>
+            <p><strong>Language:</strong> {guideData.language?.join(", ")}</p>
             <p><strong>Description:</strong> {guideData.description}</p>
           </>
         )}
@@ -305,12 +312,118 @@ const handleImageChange = async (e) => {
           {userData?.role === "tour_guide" && (
             <>
               <div className="grid md:grid-cols-2 gap-4">
-        <div><label>Age</label><input {...register("age")} className="input-style w-full" /></div>
-        <div><label>Phone</label><input {...register("phone")} className="input-style w-full" /></div>
-        <div className="md:col-span-2"><label>Coverage Areas (seperate with comma)</label><input {...register("coverageArea")} className="input-style w-full" /></div>
-        <div className="md:col-span-2"><label>Expertise (seperate with comma)</label><input {...register("expertise")} className="input-style w-full" /></div>
-        <div className="md:col-span-2"><label>Description</label><textarea {...register("description")} rows="3" className="input-style w-full"></textarea></div>
-      </div>
+  {/* Age */}
+  <div>
+    <label>Age <span className="text-red-500">*</span></label>
+    <input 
+      type="number"
+      placeholder="Enter your age"
+      {...register("age", { 
+        required: "Age is required",
+        min: { value: 18, message: "Minimum age is 18" },
+      })}
+      className="input-style w-full"
+    />
+    {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age.message}</p>}
+  </div>
+
+  {/* Phone */}
+  <div>
+    <label>Phone <span className="text-red-500">*</span></label>
+    <input 
+      type="tel"
+      placeholder="e.g. +8801700000000"
+      {...register("phone", { 
+        required: "Phone number is required",
+        pattern: {
+          value: /^\+?\d{10,15}$/,
+          message: "Enter a valid phone number"
+        }
+      })}
+      className="input-style w-full"
+    />
+    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+  </div>
+
+  {/* Experience */}
+  <div>
+    <label>Experience (in years) <span className="text-red-500">*</span></label>
+    <input 
+      type="number"
+      placeholder="e.g. 5"
+      {...register("experience", { 
+        required: "Experience is required", 
+        min: { value: 0, message: "Must be at least 0 years" }
+      })}
+      className="input-style w-full"
+    />
+    {errors.experience && <p className="text-red-500 text-sm mt-1">{errors.experience.message}</p>}
+  </div>
+
+  {/* National ID */}
+  <div>
+    <label>National ID <span className="text-red-500">*</span></label>
+    <input 
+      type="number"
+      placeholder="Enter your National ID"
+      {...register("nationalId", { 
+        required: "National ID is required",
+        minLength: { value: 10, message: "At least 10 digits required" }
+      })}
+      className="input-style w-full"
+    />
+    {errors.nationalId && <p className="text-red-500 text-sm mt-1">{errors.nationalId.message}</p>}
+  </div>
+
+  {/* Coverage Areas */}
+  <div className="md:col-span-2">
+    <label>Coverage Areas (comma separated) <span className="text-red-500">*</span></label>
+    <input 
+      type="text"
+      placeholder="e.g. Bandarban, Cox's Bazar, Rangamati"
+      {...register("coverageArea", { required: "Coverage Areas are required" })}
+      className="input-style w-full"
+    />
+    {errors.coverageArea && <p className="text-red-500 text-sm mt-1">{errors.coverageArea.message}</p>}
+  </div>
+
+  {/* Expertise */}
+  <div className="md:col-span-2">
+    <label>Expertise (comma separated) <span className="text-red-500">*</span></label>
+    <input 
+      type="text"
+      placeholder="e.g. Waterfall Trails, Camping Adventures"
+      {...register("expertise", { required: "Expertise is required" })}
+      className="input-style w-full"
+    />
+    {errors.expertise && <p className="text-red-500 text-sm mt-1">{errors.expertise.message}</p>}
+  </div>
+
+  {/* Languages */}
+  <div className="md:col-span-2">
+    <label>Languages (comma separated) <span className="text-red-500">*</span></label>
+    <input 
+      type="text"
+      placeholder="e.g. Bangla, English, Chakma"
+      {...register("language", { required: "Languages are required" })}
+      className="input-style w-full"
+    />
+    {errors.language && <p className="text-red-500 text-sm mt-1">{errors.language.message}</p>}
+  </div>
+
+  {/* Description */}
+  <div className="md:col-span-2">
+    <label>Description <span className="text-red-500">*</span></label>
+    <textarea 
+      placeholder="Describe your experience and specialties"
+      {...register("description", { required: "Description is required" })} 
+      rows="3"
+      className="input-style w-full"
+    ></textarea>
+    {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
+  </div>
+</div>
+
             </>
           )}
 
