@@ -73,7 +73,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Dynamic Page Content */}
-        <div  className="flex-1 relative px-4 py-6 md:px-8 lg:px-10 overflow-auto">
+        <div  className="flex-1 relative px-4 py-6 md:px-8 lg:px-10 overflow-auto min-h-screen">
           <Outlet />
         </div>
 

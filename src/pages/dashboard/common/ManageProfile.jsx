@@ -155,11 +155,12 @@ console.log(userData?.role)
         onRequestClose={() => setModalIsOpen(false)}
         // parentSelector={() => document.getElementById("dashboard-content")}
         contentLabel="Edit Profile"
-        className="max-w-xl mx-auto mt-20 p-8 bg-white dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-lg outline-none"
+        className="max-w-xl mx-auto mt-20 p-8 bg-white dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-lg outline-none overflow-hidden"
         overlayClassName="fixed inset-0 bg-white/95 dark:bg-black/95 flex items-start justify-center z-50"
       >
+        <div className="bg-white dark:bg-[var(--color-bg-primary-dark)] rounded-lg overflow-hidden flex flex-col max-h-[90vh]">
         <h2 className="text-xl font-semibold mb-6">Edit Profile</h2>
-
+        <div className="p-6 overflow-y-auto space-y-5 flex-1">
 {/* Profile Image */}
       <div className="relative w-24 h-24 mx-auto">
   <img
@@ -186,26 +187,31 @@ console.log(userData?.role)
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         
-          <div>
-            <label>Name</label>
-            <input {...register("name")} className="w-full input-style" />
-          </div>
-          <div>
-            <label>Email</label>
-            <input {...register("email")} readOnly className="w-full input-style bg-gray-100 dark:bg-gray-800 cursor-not-allowed" />
-          </div>
-          <div>
-            <label>Role</label>
-            <input {...register("role")} readOnly className="w-full input-style bg-gray-100 dark:bg-gray-800 cursor-not-allowed" />
-          </div>
+            {/* Basic Fields */}
+  <div className="grid md:grid-cols-2 gap-4">
+    <div>
+      <label>Name</label>
+      <input {...register("name")} className="input-style w-full" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input readOnly {...register("email")} className="input-style w-full bg-gray-100 dark:bg-gray-800" />
+    </div>
+    <div>
+      <label>Role</label>
+      <input readOnly {...register("role")} className="input-style w-full bg-gray-100 dark:bg-gray-800" />
+    </div>
+  </div>
 
           {userData?.role === "tour_guide" && (
             <>
-              <div><label>Age</label><input {...register("age")} className="w-full input-style" /></div>
-              <div><label>Phone</label><input {...register("phone")} className="w-full input-style" /></div>
-              <div><label>Coverage Area (comma separated)</label><input {...register("coverageArea")} className="w-full input-style" /></div>
-              <div><label>Expertise (comma separated)</label><input {...register("expertise")} className="w-full input-style" /></div>
-              <div><label>Description</label><textarea {...register("description")} className="w-full input-style" rows="3"></textarea></div>
+              <div className="grid md:grid-cols-2 gap-4">
+        <div><label>Age</label><input {...register("age")} className="input-style w-full" /></div>
+        <div><label>Phone</label><input {...register("phone")} className="input-style w-full" /></div>
+        <div className="md:col-span-2"><label>Coverage Areas</label><input {...register("coverageArea")} className="input-style w-full" /></div>
+        <div className="md:col-span-2"><label>Expertise</label><input {...register("expertise")} className="input-style w-full" /></div>
+        <div className="md:col-span-2"><label>Description</label><textarea {...register("description")} rows="3" className="input-style w-full"></textarea></div>
+      </div>
             </>
           )}
 
@@ -225,6 +231,8 @@ console.log(userData?.role)
             </button>
           </div>
         </form>
+        </div>
+        </div>
       </Modal>
     </div>
   );
