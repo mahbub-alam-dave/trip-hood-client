@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Managestories = () => {
+const ManageStories = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Managestories = () => {
     );
 };
 
-export default Managestories;
+export default ManageStories;

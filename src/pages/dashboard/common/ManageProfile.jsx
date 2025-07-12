@@ -7,19 +7,21 @@ import { FaEdit } from "react-icons/fa";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import avatar from '../../../assets/avatar.png'
-import { FaUserCircle, FaCamera } from "react-icons/fa";
+import { FaCamera, FaUserTie } from "react-icons/fa";
+import { Link } from "react-router";
 import axios from "axios";
 
 Modal.setAppElement("#root");
 
 const ManageProfile = () => {
 
-  const { user } = useContext(ContextValues)
+  const { user, updateUser } = useContext(ContextValues)
   const axiosSecure = useAxiosSecure()
 
   const queryClient = useQueryClient();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState()
+  
 
 //   fetch user data
 const { data: userData = {}, isLoading } = useQuery({
@@ -30,8 +32,6 @@ const { data: userData = {}, isLoading } = useQuery({
   },
   enabled: !!user?.email,
 });
-
-console.log(userData?.role)
 
 
   // Fetch guide-specific info if guide
@@ -46,6 +46,7 @@ console.log(userData?.role)
     },
     enabled: !!user?.email && userData?.role === "tour_guide",
   });
+
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -66,13 +67,10 @@ console.log(userData?.role)
   };
 
   // Update Mutation
-  const updateProfileMutation = useMutation({
+/*   const updateProfileMutation = useMutation({
     mutationFn: async (updatedData) => {
-      const url =
-        userData?.role === "tour_guide"
-          ? `/guides/update/${guideData._id}`
-          : `/users/update/${user.email}`;
-      const res = await axiosSecure.patch(url, updatedData);
+      const res = await axiosSecure.patch(`${import.meta.env.VITE_app_url}/profile/update`, updatedData);
+      console.log(res.data)
       return res.data;
     },
     onSuccess: () => {
@@ -82,15 +80,28 @@ console.log(userData?.role)
     },
   });
 
+  const [image, setImage] = useState(userData.photo);
+
   const onSubmit = (data) => {
+
+    if(image && data.name) {
+      updateUser({displayName: data.name, photoURL: image})
+      .then(() => {
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+    }
+
     if (userData?.role === "tour_guide") {
       data.coverageArea = data.coverageArea.split(",").map((item) => item.trim());
       data.expertise = data.expertise.split(",").map((item) => item.trim());
     }
-    updateProfileMutation.mutate(data);
+    const updatedData = {...data, photo: image}
+    updateProfileMutation.mutate(updatedData);
   };
 
-// image update
+
   const handleImageChange = async (e) => {
   const image = e.target.files[0];
   if (!image) return;
@@ -112,30 +123,94 @@ console.log(userData?.role)
       text: error.message,
     });
   }
+}; */
+
+const updateProfileMutation = useMutation({
+  mutationFn: async (updatedData) => {
+    const res = await axiosSecure.patch(`${import.meta.env.VITE_app_url}/profile/update`, updatedData);
+    return res.data;
+  },
+  onSuccess: async (res, variables) => {
+    if (variables.name && variables.photo) {
+      try {
+        await updateUser({ displayName: variables.name, photoURL: variables.photo });
+      } catch (error) {
+        console.error("Firebase update failed", error);
+      }
+    }
+
+    Swal.fire("Success!", "Profile updated successfully.", "success");
+    queryClient.invalidateQueries();
+    setModalIsOpen(false);
+  },
+  onError: (error) => {
+    Swal.fire("Error!", "Failed to update profile.", "error");
+    console.error(error);
+  }
+});
+
+const onSubmit = (formData) => {
+
+  const finalImage = image || userData.photo;
+
+  const cleanData = {
+    ...formData,
+    photo: finalImage
+  };
+
+  console.log(formData)
+
+  if (userData?.role === "tour_guide") {
+    cleanData.coverageArea = formData.coverageArea.split(",").map((item) => item.trim());
+    cleanData.expertise = formData.expertise.split(",").map((item) => item.trim());
+  }
+
+  updateProfileMutation.mutate(cleanData);
 };
+
+const handleImageChange = async (e) => {
+  const imageFile = e.target.files[0];
+  if (!imageFile) return;
+
+  try {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    const res = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgbb_url}`,
+      formData
+    );
+    setImage(res.data.data.display_url);
+  } catch (error) {
+    console.error("Image upload failed", error);
+    Swal.fire("Error!", "Image upload failed.", "error");
+  }
+};
+
 
   if(isLoading) return <span className="loading loading-spinner"></span>
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-[var(--color-text-primary)]">Manage Profile</h2>
-        <button
+        <h2 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Profile</h2>
+        {/* <button
           onClick={openModal}
           className="flex items-center gap-2 bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg hover:bg-[var(--color-primary-dark)] transition"
         >
           <FaEdit /> Edit Profile
-        </button>
+        </button> */}
       </div>
 
-      <div className="bg-white dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-lg shadow-md space-y-4">
+      <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-sm dark:shadow-gray-500 p-6">
+      <div className="flex-1 space-y-4">
         <img
-    src={userData?.photoURL || avatar}
+    src={userData?.photo || avatar}
     alt="Profile"
-    className="w-16 h-16 rounded-full border-2 border-[var(--color-primary)]"
+    className="w-16 h-16 object-cover rounded-full border-2 border-[var(--color-primary)]"
   />
         <p><strong>Name:</strong> {user?.displayName}</p>
-        <p><strong>Email:</strong> {user?.email}</p>
+        <p className="break-all"><strong>Email:</strong> {user?.email}</p>
         <p><strong>Role:</strong> {userData?.role}</p>
 
         {userData?.role === "tour_guide" && guideData && (
@@ -148,30 +223,54 @@ console.log(userData?.role)
           </>
         )}
       </div>
+<button
+          onClick={openModal}
+          className="flex  items-center gap-2 bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg hover:bg-[var(--color-primary-dark)] transition"
+        >
+          <FaEdit /> Edit Profile
+        </button>
+      </div>
+
+      {
+        userData.role === "tourist" &&
+        <div className="mt-6 flex ">
+      <Link
+        to="/dashboard/join-as-guide"
+        className="flex items-center gap-2 bg-[var(--color-primary)] text-white px-5 py-2 rounded-lg hover:bg-[var(--color-primary-dark)] transition"
+      >
+        <FaUserTie className="text-lg" />
+        <span className="font-medium">Apply for Tour Guide</span>
+      </Link>
+    </div>
+      }
 
       {/* Modal */}
+      <div className="ml-5">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        // parentSelector={() => document.getElementById("dashboard-content")}
+        parentSelector={() => document.getElementById("dashboard-content")}
         contentLabel="Edit Profile"
-        className="max-w-xl mx-auto mt-20 p-8 bg-white dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-lg outline-none overflow-hidden"
-        overlayClassName="fixed inset-0 bg-white/95 dark:bg-black/95 flex items-start justify-center z-50"
+        className="max-w-xl w-full mx-auto mt-10 p-4 sm:p-8 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-lg outline-none overflow-hidden"
+        overlayClassName="fixed inset-0 bg-white/95 dark:bg-black/95 flex items-start justify-center p-5 z-50"
       >
-        <div className="bg-white dark:bg-[var(--color-bg-primary-dark)] rounded-lg overflow-hidden flex flex-col max-h-[90vh]">
-        <h2 className="text-xl font-semibold mb-6">Edit Profile</h2>
-        <div className="p-6 overflow-y-auto space-y-5 flex-1">
+        <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg overflow-hidden flex flex-col max-h-[90vh]">
+        <h2 className="text-xl font-semibold text-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">Edit Profile</h2>
+
+        
+        <div className=" overflow-y-auto space-y-5 flex-1">
+
 {/* Profile Image */}
-      <div className="relative w-24 h-24 mx-auto">
+      <div className="relative w-16 h-16 mx-auto">
   <img
-    src={image || userData?.photoURL || avatar}
+    src={image || userData?.photo || avatar}
     alt="Profile"
-    className="w-24 h-24 rounded-full border-2 border-[var(--color-primary)] object-cover"
+    className="w-16 h-16 rounded-full border-2 border-[var(--color-primary)] object-cover"
   />
 
   {/* Camera Icon overlay */}
   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 rounded-full opacity-0 hover:opacity-100 transition">
-    <label htmlFor="imageUpload" className="cursor-pointer text-white text-2xl">
+    <label htmlFor="imageUpload" className="cursor-pointer text-[var(--color-text-primary-two)] text-2xl">
       <FaCamera />
     </label>
   </div>
@@ -185,21 +284,21 @@ console.log(userData?.role)
   />
 </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:p-4 text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
         
             {/* Basic Fields */}
-  <div className="grid md:grid-cols-2 gap-4">
     <div>
       <label>Name</label>
       <input {...register("name")} className="input-style w-full" />
     </div>
+  <div className={`grid ${userData.role === "tour_guide" && "md:grid-cols-2"} gap-4`}>
     <div>
       <label>Email</label>
-      <input readOnly {...register("email")} className="input-style w-full bg-gray-100 dark:bg-gray-800" />
+      <input readOnly {...register("email")} className="input-style w-full " />
     </div>
     <div>
       <label>Role</label>
-      <input readOnly {...register("role")} className="input-style w-full bg-gray-100 dark:bg-gray-800" />
+      <input readOnly {...register("role")} className="input-style w-full" />
     </div>
   </div>
 
@@ -208,32 +307,33 @@ console.log(userData?.role)
               <div className="grid md:grid-cols-2 gap-4">
         <div><label>Age</label><input {...register("age")} className="input-style w-full" /></div>
         <div><label>Phone</label><input {...register("phone")} className="input-style w-full" /></div>
-        <div className="md:col-span-2"><label>Coverage Areas</label><input {...register("coverageArea")} className="input-style w-full" /></div>
-        <div className="md:col-span-2"><label>Expertise</label><input {...register("expertise")} className="input-style w-full" /></div>
+        <div className="md:col-span-2"><label>Coverage Areas (seperate with comma)</label><input {...register("coverageArea")} className="input-style w-full" /></div>
+        <div className="md:col-span-2"><label>Expertise (seperate with comma)</label><input {...register("expertise")} className="input-style w-full" /></div>
         <div className="md:col-span-2"><label>Description</label><textarea {...register("description")} rows="3" className="input-style w-full"></textarea></div>
       </div>
             </>
           )}
 
-          <div className="flex justify-end gap-3 pt-2">
+          <div className="flex justify-end flex-wrap gap-3 pt-2">
             <button
               type="button"
               onClick={() => setModalIsOpen(false)}
-              className="px-4 py-2 border rounded-lg text-sm"
+              className="px-4 py-2 border rounded-lg text-sm cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg hover:bg-[var(--color-primary-dark)]"
+              className="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-text-primary-two)] rounded-lg dark:bg-[var(--color-primary-dark)] cursor-pointer"
             >
-              Save Changes
+              Update
             </button>
           </div>
         </form>
         </div>
         </div>
       </Modal>
+      </div>
     </div>
   );
 };

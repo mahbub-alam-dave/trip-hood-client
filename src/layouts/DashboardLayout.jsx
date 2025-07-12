@@ -6,14 +6,13 @@ import { RiGuideLine } from "react-icons/ri";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  console.log("this is dashboard page")
 
   const navLinks = [
     { to: "/dashboard/profile", label: "Manage Profile", icon: <FaUserCircle /> },
     { to: "/dashboard/bookings", label: "My Bookings", icon: <FaBookmark /> },
     { to: "/dashboard/manage-stories", label: "Manage Stories", icon: <FaBookOpen /> },
     { to: "/dashboard/add-story", label: "Add Story", icon: <FaPlusCircle /> },
-    { to: "/dashboard/join-guide", label: "Join as Tour Guide", icon: <RiGuideLine /> },
+    { to: "/dashboard/join-as-guide", label: "Join as Tour Guide", icon: <RiGuideLine /> },
   ];
 
   return (
@@ -22,7 +21,7 @@ const DashboardLayout = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] border-r border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-6 transition-transform duration-300 z-50 ${
+        className={`fixed top-0 left-0 h-full w-64 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] border-r border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-6 py-8 transition-transform duration-300 z-50 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:static`}
       >
@@ -39,8 +38,8 @@ const DashboardLayout = () => {
               className={({ isActive }) =>
                 `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
                   isActive
-                    ? "bg-[var(--color-primary)] text-white"
-                    : "hover:bg-[var(--color-secondary)] hover:text-white dark:hover:bg-[var(--color-secondary-dark)]"
+                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
+                    : ""
                 }`
               }
               onClick={() => setSidebarOpen(false)}
@@ -73,7 +72,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Dynamic Page Content */}
-        <div  className="flex-1 relative px-4 py-6 md:px-8 lg:px-10 overflow-auto min-h-screen">
+        <div id="dashboard-content" className="flex-1 relative px-4 py-8 sm:px-6 lg:px-8 overflow-hidden">
           <Outlet />
         </div>
 
