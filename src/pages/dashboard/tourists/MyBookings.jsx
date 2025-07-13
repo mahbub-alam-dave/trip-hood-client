@@ -1,12 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useContext } from "react";
 import { FaMoneyBillWave, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { Link } from "react-router";
+
 
 const MyBookings = () => {
+  
   const { user } = useContext(ContextValues);
   const axiosSecure = useAxiosSecure()
+
+    const queryClient = useQueryClient();
 
   const { data: bookings = [], isLoading } = useQuery({
     queryKey: ["my-bookings", user?.email],
@@ -16,6 +22,36 @@ const MyBookings = () => {
     },
     enabled: !!user?.email,
   });
+
+
+const cancelBookingMutation = useMutation({
+  mutationFn: async (id) => {
+    const res = await axiosSecure.delete(`/bookings/${id}`);
+    return res.data;
+  },
+  onSuccess: () => {
+    Swal.fire("Cancelled!", "Your booking has been cancelled.", "success");
+    queryClient.invalidateQueries(["my-bookings"]);
+  },
+});
+
+const handleCancelBooking = (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this booking!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, cancel it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      cancelBookingMutation.mutate(id);
+    }
+  });
+};
+
+
 
   if (isLoading) return <div className="text-center py-20">Loading your bookings...</div>;
 
@@ -54,10 +90,12 @@ const MyBookings = () => {
                 <td className="px-4 py-3 flex items-center gap-2 justify-center">
                   {booking.status === "pending" && (
                     <>
+                    <Link to={`/dashboard/payment/${booking._id}`}>
                       <button className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] px-3 py-1 rounded-lg flex items-center gap-1 hover:bg-green-600 transition text-sm">
                         <FaMoneyBillWave /> Pay
                       </button>
-                      <button className="bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-[var(--color-text-primary-two)] px-3 py-1 rounded-lg flex items-center gap-1 hover:bg-red-600 transition text-sm">
+                      </Link>
+                      <button  onClick={() => handleCancelBooking(booking._id)} className="bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-[var(--color-text-primary-two)] px-3 py-1 rounded-lg flex items-center gap-1 hover:bg-red-600 transition text-sm">
                         <FaTimesCircle /> Cancel
                       </button>
                     </>

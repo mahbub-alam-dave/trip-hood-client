@@ -16,6 +16,7 @@ import Managestories from "../pages/dashboard/tourists/ManageStories";
 import ManageProfile from "../pages/dashboard/common/ManageProfile";
 import ManageStories from "../pages/dashboard/tourists/ManageStories";
 import BecomeGuide from '../pages/dashboard/tourists/BecomeGuide'
+import PaymentPage from "../pages/payment/PaymentPage";
 
 export const router = createBrowserRouter([
     {
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
             {
                 path: "join-as-guide",
                 element: <BecomeGuide />
+            },
+            {
+                path: 'payment/:id',
+                element: <PaymentPage />
             }
         ]
     }
