@@ -1,7 +1,11 @@
 import { FaCheckCircle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-const BookingSuccessModal = ({ isOpen, onClose }) => {
+const BookingSuccessModal = ({ isOpen, bookingId }) => {
+
+
+  const navigate = useNavigate()
+
   if (!isOpen) return null;
 
   return (
@@ -16,8 +20,8 @@ const BookingSuccessModal = ({ isOpen, onClose }) => {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <button
-            onClick={onClose}
-            className="w-full px-4 py-2 rounded-lg bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] font-semibold hover:bg-[var(--color-primary-dark)] transition"
+          onClick={() => navigate(`/dashboard/payment/${bookingId}`)}
+          className="w-full px-4 py-2 rounded-lg bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] font-semibold hover:bg-[var(--color-primary-dark)] transition"
           >
             Confirm Booking
           </button>

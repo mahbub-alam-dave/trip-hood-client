@@ -21,6 +21,7 @@ const BookingForm = ({ packageData, guides }) => {
   const navigate = useNavigate()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookingId, setBookingId] = useState('')
 
   const [tourDate, setTourDate] = useState(new Date());
   const { register, handleSubmit, reset } = useForm();
@@ -30,6 +31,7 @@ const BookingForm = ({ packageData, guides }) => {
   const bookingMutation = useMutation({
     mutationFn: async (bookingData) => {
       const res = await axiosSecure.post("/bookings", bookingData);
+      setBookingId(res.data.bookingId)
       return res.data;
     },
     onSuccess: () => {
@@ -189,6 +191,7 @@ const BookingForm = ({ packageData, guides }) => {
         <BookingSuccessModal
   isOpen={isModalOpen}
   onClose={() => setIsModalOpen(false)}
+  bookingId={bookingId}
 />
 
 
