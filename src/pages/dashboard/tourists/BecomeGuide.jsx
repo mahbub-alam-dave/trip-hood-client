@@ -36,8 +36,8 @@ const BecomeGuide = () => {
   };
 
   return (
-    <div className=" py-6">
-      <h1 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 ">
+    <div className=" max-w-3xl mx-auto pt-10">
+      <h1 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 text-center">
         Become a Tour Guide
       </h1>
 

@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet } from "react-router";
 import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaPlusCircle, FaUserEdit, FaSignOutAlt } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
 import { RiGuideLine } from "react-icons/ri";
+import Footer from "../components/sharedComponents/Footer";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -59,7 +60,7 @@ const DashboardLayout = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col flex-1 overflow-y-auto">
+      <div className="flex flex-col flex-1 overflow-y-auto ">
         {/* Topbar */}
         <div className="flex items-center justify-between lg:hidden px-4 py-4 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
           <span className="text-xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)]">Trip Hood</span>
@@ -72,14 +73,15 @@ const DashboardLayout = () => {
         </div>
 
         {/* Dynamic Page Content */}
-        <div id="dashboard-content" className="flex-1 relative px-4 py-8 sm:px-6 lg:px-8 overflow-hidden">
+        <div id="dashboard-content" className="flex-1 relative px-4 py-8 sm:px-6 lg:px-8">
           <Outlet />
         </div>
 
         {/* Footer */}
-        <footer className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-6 text-center text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
+{/*         <footer className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-6 text-center text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
           &copy; {new Date().getFullYear()} Trip Hood — All rights reserved.
-        </footer>
+        </footer> */}
+        <Footer />
       </div>
     </div>
     </div>

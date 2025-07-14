@@ -12,11 +12,11 @@ import AboutUsPage from "../pages/generalPages/AboutUsPage";
 import CommunityPage from "../pages/generalPages/CommunityPage";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyBookings from "../pages/dashboard/tourists/MyBookings";
-import Managestories from "../pages/dashboard/tourists/ManageStories";
 import ManageProfile from "../pages/dashboard/common/ManageProfile";
-import ManageStories from "../pages/dashboard/tourists/ManageStories";
+import ManageStories from "../pages/dashboard/common/ManageStories";
 import BecomeGuide from '../pages/dashboard/tourists/BecomeGuide'
 import PaymentPage from "../pages/payment/PaymentPage";
+import AddStoryPage from "../pages/dashboard/common/AddStoryPage";
 
 export const router = createBrowserRouter([
     {
@@ -70,12 +70,16 @@ export const router = createBrowserRouter([
                 element: <ManageProfile />
             },
             {
-                path: "my-bookings",
-                element: <MyBookings />
+                path: 'add-story',
+                element: <AddStoryPage />
             },
             {
-                path: "manage-stories",
+                path: 'manage-stories',
                 element: <ManageStories />
+            },
+            {
+                path: "my-bookings",
+                element: <MyBookings />
             },
             {
                 path: "join-as-guide",
