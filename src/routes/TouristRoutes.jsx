@@ -13,7 +13,7 @@ const TouristRoutes = ({children}) => {
         return <span className='loading loading-spinner'></span>
     }
 
-    if(!user || role !== "tour_guide") {
+    if(!user || role !== "tourist") {
         return <Navigate to={"/forbidden"}></Navigate>
     }
     

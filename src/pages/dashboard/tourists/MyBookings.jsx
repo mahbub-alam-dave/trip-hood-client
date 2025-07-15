@@ -100,7 +100,7 @@ const handleCancelBooking = (id) => {
                       </button>
                     </>
                   )}
-                  {booking.status === "paid" && (
+                  {booking.status === "in_review" && (
                     <button className="bg-gray-400 cursor-not-allowed text-[var(--color-text-primary-two)] px-3 py-1 rounded-lg flex items-center gap-1 text-sm">
                       <FaCheckCircle /> Paid
                     </button>
