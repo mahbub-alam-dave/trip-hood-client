@@ -67,6 +67,7 @@ const BookingForm = ({ packageData, guides }) => {
       ...restData,
       tourDate,
       packageId: packageData._id,
+      packageName: packageData.title,
       price: packageData.price,
       destination: packageData.destination,
       touristName: user?.displayName,

@@ -20,6 +20,13 @@ import AddStoryPage from "../pages/dashboard/common/AddStoryPage";
 // import UpdateStoryPage from "../pages/dashboard/common/UpdateStoryPage";
 import UpdateStory from "../pages/dashboard/common/UpdateStory";
 import Forbidden from "../pages/errors/Forbidden";
+import GuidesRoutes from "./GuidesRoutes";
+import TouristRoutes from "./TouristRoutes";
+import AdminRoutes from "./AdminRoutes";
+import AddPackage from "../pages/dashboard/admin/AddPackage";
+import ManageUsers from "../pages/dashboard/admin/ManageUsers";
+import ManageCandidates from "../pages/dashboard/admin/ManageCandidates";
+import MyAssignedTours from "../pages/dashboard/guides/MyAssignedTours";
 
 export const router = createBrowserRouter([
     {
@@ -90,15 +97,31 @@ export const router = createBrowserRouter([
             },
             {
                 path: "my-bookings",
-                element: <MyBookings />
+                element: <TouristRoutes><MyBookings /></TouristRoutes>
             },
             {
                 path: "join-as-guide",
-                element: <BecomeGuide />
+                element: <TouristRoutes> <BecomeGuide /> </TouristRoutes>
             },
             {
                 path: 'payment/:id',
                 element: <PaymentPage />
+            },
+            {
+                path: "my-assigned-tours",
+                element: <GuidesRoutes> <MyAssignedTours /> </GuidesRoutes>
+            },
+            {
+                path: 'add-tour-package',
+                element: <AdminRoutes> <AddPackage /> </AdminRoutes>
+            },
+            {
+                path: 'manage-users',
+                element: <AdminRoutes> <ManageUsers /> </AdminRoutes>
+            },
+            {
+                path: 'manage-candidates',
+                element: <AdminRoutes> <ManageCandidates /> </AdminRoutes>
             }
         ]
     },

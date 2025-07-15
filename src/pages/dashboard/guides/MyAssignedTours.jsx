@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyAssignedRides = () => {
+const MyAssignedTours = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const MyAssignedRides = () => {
     );
 };
 
-export default MyAssignedRides;
+export default MyAssignedTours;

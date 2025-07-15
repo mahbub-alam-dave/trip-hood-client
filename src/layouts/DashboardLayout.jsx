@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaPlusCircle, FaUserEdit, FaSignOutAlt } from "react-icons/fa";
+import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaPlusCircle, FaMapMarkedAlt, FaUserEdit, FaSignOutAlt, FaRegAddressCard } from "react-icons/fa";
+import { RiSuitcaseLine, RiUserSettingsLine, RiUserSearchLine } from "react-icons/ri";
 import { FaBookOpen } from "react-icons/fa";
 import { RiGuideLine } from "react-icons/ri";
 import Footer from "../components/sharedComponents/Footer";
@@ -13,17 +14,35 @@ const DashboardLayout = () => {
 
   const navLinks = [
     { to: "/dashboard/profile", label: "Manage Profile", icon: <FaUserCircle /> },
-    { to: "/dashboard/manage-stories", label: "Manage Stories", icon: <FaBookOpen /> },
     { to: "/dashboard/add-story", label: "Add Story", icon: <FaPlusCircle /> },
+    { to: "/dashboard/manage-stories", label: "Manage Stories", icon: <FaBookOpen /> },
   ];
 
-  const touristLinks =[
+  const touristLinks = [
         { to: "/dashboard/my-bookings", label: "My Bookings", icon: <FaBookmark /> },
-        { to: "/dashboard/join-as-guide", label: "Join as Tour Guide", icon: <RiGuideLine /> },
+        { to: "/dashboard/join-as-guide", label: "Join as Tour Guide", icon: <FaRegAddressCard /> },
   ];
 
   const guidesLinks = [
-      { to: "/dashboard/my-assigned-tours", label: "Join as Tour Guide", icon: <RiGuideLine /> },
+      { to: "/dashboard/my-assigned-tours", label: "My Assigned Tours", icon: <FaMapMarkedAlt /> },
+  ];
+
+  const AdminLinks =[
+    {
+    to: "/dashboard/add-tour-package",
+    label: "Add A Package",
+    icon: <RiSuitcaseLine />,   // 🧳 Perfect for tour/package context
+  },
+  {
+    to: "/dashboard/manage-users",
+    label: "Manage Users",
+    icon: <RiUserSettingsLine />, // 👤⚙️ For user management
+  },
+  {
+    to: "/dashboard/manage-candidates",
+    label: "Manage Candidates",
+    icon: <RiUserSearchLine />,  // 👤🔍 Ideal for candidate management
+  },
   ]
 
   return (
@@ -42,7 +61,8 @@ const DashboardLayout = () => {
         </div></Link>
 
         <nav className="flex flex-col gap-6">
-          {navLinks.map((link) => (
+
+            {navLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
@@ -59,6 +79,77 @@ const DashboardLayout = () => {
               <span className="text-base font-medium">{link.label}</span>
             </NavLink>
           ))}
+
+            {
+            !roleLoading && role==="tour_guide" &&
+            <>
+            {guidesLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
+                  isActive
+                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
+                    : ""
+                }`
+              }
+              onClick={() => setSidebarOpen(false)}
+            >
+              {link.icon}
+              <span className="text-base font-medium">{link.label}</span>
+            </NavLink>
+          ))}</>
+          }
+
+          {
+            !roleLoading && role==="admin" &&
+            <>
+            {AdminLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
+                  isActive
+                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
+                    : ""
+                }`
+              }
+              onClick={() => setSidebarOpen(false)}
+            >
+              {link.icon}
+              <span className="text-base font-medium">{link.label}</span>
+            </NavLink>
+          ))}
+          </>
+          }
+
+
+          {/* tourist links */}
+          { !roleLoading && role==="tourist" && 
+          <>
+          {touristLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
+                  isActive
+                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
+                    : ""
+                }`
+              }
+              onClick={() => setSidebarOpen(false)}
+            >
+              {link.icon}
+              <span className="text-base font-medium">{link.label}</span>
+            </NavLink>
+          ))}
+          </>
+        }
+
+
 
           <button
             className="flex items-center gap-3 px-3 py-2 mt-6 rounded-lg bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-[var(--color-text-primary-two)] hover:bg-red-600"
