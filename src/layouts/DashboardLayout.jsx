@@ -4,17 +4,27 @@ import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaPlusCircle, FaUserEdit, Fa
 import { FaBookOpen } from "react-icons/fa";
 import { RiGuideLine } from "react-icons/ri";
 import Footer from "../components/sharedComponents/Footer";
+import useUserRole from "../utility/hooks/useUserRole";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const {role, roleLoading} = useUserRole()
+
   const navLinks = [
     { to: "/dashboard/profile", label: "Manage Profile", icon: <FaUserCircle /> },
-    { to: "/dashboard/my-bookings", label: "My Bookings", icon: <FaBookmark /> },
     { to: "/dashboard/manage-stories", label: "Manage Stories", icon: <FaBookOpen /> },
     { to: "/dashboard/add-story", label: "Add Story", icon: <FaPlusCircle /> },
-    { to: "/dashboard/join-as-guide", label: "Join as Tour Guide", icon: <RiGuideLine /> },
   ];
+
+  const touristLinks =[
+        { to: "/dashboard/my-bookings", label: "My Bookings", icon: <FaBookmark /> },
+        { to: "/dashboard/join-as-guide", label: "Join as Tour Guide", icon: <RiGuideLine /> },
+  ];
+
+  const guidesLinks = [
+      { to: "/dashboard/my-assigned-tours", label: "Join as Tour Guide", icon: <RiGuideLine /> },
+  ]
 
   return (
     <div className="bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)]">

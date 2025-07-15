@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import Root from "../layouts/Root";
 import PrivateRoutes from '../routes/PrivateRoutes'
 import Home from "../pages/generalPages/Home";
@@ -17,6 +17,9 @@ import ManageStories from "../pages/dashboard/common/ManageStories";
 import BecomeGuide from '../pages/dashboard/tourists/BecomeGuide'
 import PaymentPage from "../pages/payment/PaymentPage";
 import AddStoryPage from "../pages/dashboard/common/AddStoryPage";
+// import UpdateStoryPage from "../pages/dashboard/common/UpdateStoryPage";
+import UpdateStory from "../pages/dashboard/common/UpdateStory";
+import Forbidden from "../pages/errors/Forbidden";
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +69,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes> <DashboardLayout /> </PrivateRoutes>,
         children: [
             {
+                index: true, // 👈 this is equivalent to path: ''
+      element: <Navigate to="/dashboard/profile" replace />
+            },
+            {
                 path: 'profile',
                 element: <ManageProfile />
             },
@@ -76,6 +83,10 @@ export const router = createBrowserRouter([
             {
                 path: 'manage-stories',
                 element: <ManageStories />
+            },
+            {
+                path: 'edit-story/:id',
+                element: <UpdateStory />
             },
             {
                 path: "my-bookings",
@@ -90,5 +101,9 @@ export const router = createBrowserRouter([
                 element: <PaymentPage />
             }
         ]
+    },
+    {
+        path: 'forbidden',
+        element: <Forbidden />
     }
 ])

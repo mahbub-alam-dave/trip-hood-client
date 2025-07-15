@@ -195,15 +195,20 @@ const handleImageChange = async (e) => {
   if(isLoading) return <span className="loading loading-spinner"></span>
 
   return (
-    <div className="">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Profile</h2>
-        {/* <button
-          onClick={openModal}
-          className="flex items-center gap-2 bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg hover:bg-[var(--color-primary-dark)] transition"
-        >
-          <FaEdit /> Edit Profile
-        </button> */}
+    <div className="mt-8">
+
+       <div className="text-center space-y-2 mb-6">
+        <h1 className="text-4xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+          Welcome back, {user?.displayName?.split(" ")[0]}! 👋
+        </h1>
+        <p className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
+          Manage your profile details and keep everything up to date.
+        </p>
+      </div>
+
+
+      <div className="flex justify-between items-center mb-8">
+        {/* <h2 className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Profile</h2> */}
       </div>
 
       <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-sm dark:shadow-gray-500 p-6">

@@ -45,7 +45,7 @@ if (isLoading) return <div>Loading tour guides...</div>;
 
       <div className="text-center mt-12">
         <Link
-          to="/all-stories"
+          to="/community"
           className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] px-6 py-3 rounded-lg hover:opacity-90 transition"
         >
           View All Stories

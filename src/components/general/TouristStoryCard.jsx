@@ -17,7 +17,7 @@ const TouristStoryCard = ({ story }) => {
   return (
     <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-xl overflow-hidden shadow-lg flex flex-col transition hover:scale-105">
       <img
-        src={story.image}
+        src={story.images[0]}
         alt={story.title}
         className="h-48 w-full object-cover"
       />

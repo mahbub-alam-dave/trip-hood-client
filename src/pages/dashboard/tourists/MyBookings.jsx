@@ -56,8 +56,8 @@ const handleCancelBooking = (id) => {
   if (isLoading) return <div className="text-center py-20">Loading your bookings...</div>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Bookings</h2>
+    <div className="max-w-7xl mx-auto py-8">
+      <h2 className="text-2xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Bookings</h2>
 
       <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
         <table className="min-w-full table-auto text-left">
