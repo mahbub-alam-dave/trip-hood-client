@@ -133,7 +133,7 @@ const { data: userData = {}, isLoading, } = useQuery({
 
 const updateProfileMutation = useMutation({
   mutationFn: async (updatedData) => {
-    const res = await axiosSecure.patch(`${import.meta.env.VITE_app_url}/profile/update`, updatedData);
+    const res = await axiosSecure.patch(`/profile/update`, updatedData);
     return res.data;
   },
   onSuccess: async (res, variables) => {

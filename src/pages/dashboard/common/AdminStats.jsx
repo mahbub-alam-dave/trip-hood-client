@@ -18,7 +18,7 @@ const AdminStats = () => {
   const { data = {}, isLoading } = useQuery({
     queryKey: ["admin-stats"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/admin/stats");
+      const res = await axiosSecure.get(`/admin/stats`);
       return res.data;
     },
   });
@@ -105,7 +105,7 @@ const AdminStats = () => {
                 backgroundColor: "var(--color-primary)",
                 borderRadius: "4px",
                 border: "none",
-                color: "#fff",
+                color: "#000",
               }}
               labelStyle={{ color: "#fff" }}
             />

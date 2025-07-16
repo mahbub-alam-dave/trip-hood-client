@@ -22,7 +22,7 @@ const CheckoutForm = () => {
   const {data: booking, isLoading, isError} = useQuery({
     queryKey: ["booking", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_app_url}/bookings/${id}`);
+      const res = await axiosSecure.get(`/bookings/${id}`);
       return res.data;
     },
     enabled: !!id,  // only runs when id is available
@@ -64,7 +64,7 @@ try {
     setSuccess("Payment successful!");
     setError("");
 
-    await axiosSecure.patch(`${import.meta.env.VITE_app_url}/bookings/pay/${booking._id}`)
+    await axiosSecure.patch(`/bookings/pay/${booking._id}`)
 
     const paymentData = {
       bookingId: booking._id,
@@ -76,7 +76,7 @@ try {
       paymentAt: new Date().toISOString()
     };
 
-    const paymentRes = await axiosSecure.post(`${import.meta.env.VITE_app_url}/payments`, paymentData);
+    const paymentRes = await axiosSecure.post(`/payments`, paymentData);
     console.log(paymentRes, paymentRes.data)
 
     if (paymentRes.data.insertedId) {

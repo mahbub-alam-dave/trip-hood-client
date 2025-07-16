@@ -13,7 +13,7 @@ const CommunityPage = () => {
   const { data: stories = [], isLoading, isError } = useQuery({
     queryKey: ["community-stories"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/stories");
+      const res = await axiosSecure.get(`/stories`);
       return res.data;
     },
   });
@@ -35,7 +35,7 @@ const CommunityPage = () => {
           >
             <div className="h-56 w-full overflow-hidden">
               <img
-                src={story.image}
+                src={story.images[0]}
                 alt={story.title}
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />

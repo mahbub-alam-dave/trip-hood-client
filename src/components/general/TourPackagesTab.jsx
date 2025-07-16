@@ -15,7 +15,7 @@ const TourPackagesTab = () => {
   const axiosSecure = useAxiosSecure()
   
   const fetchPackages = async () => {
-    const res = await axiosSecure.get("/packages/random");
+    const res = await axiosSecure.get(`/packages/random`);
     return res.data;
   };
 

@@ -1,9 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaBars, FaTimes, FaUserCircle, FaThLarge, FaSignOutAlt } from "react-icons/fa";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import ToggleIcon from "./ToggleIcon";
 import avatar from '../../../assets/avatar.png'
+import logoLight from '../../../assets/logoLight.png'
+import logoDark from '../../../assets/logoDark.png'
+import useThemeMode from "../../../utility/hooks/useThemeMode";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,12 +24,14 @@ const Navbar = () => {
     setDropdownOpen(false);
   };
 
+const theme = useThemeMode()
+
   return (
     <header className="w-full bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] shadow-sm border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center h-24 px-4 sm:px-6 lg:px-8">
         {/* Logo & Name */}
-        <Link to="/" className="flex items-center gap-2 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] font-bold text-2xl">
-          {/* <img src="/logo.svg" alt="logo" className="w-12 h-12" /> */}
+        <Link to="/" className="flex items-center gap-3 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] font-bold text-2xl">
+          <img src={theme === "dark" ? logoDark : logoLight } alt="logo" className="w-8 h-8" />
           Trip Hood
         </Link>
 

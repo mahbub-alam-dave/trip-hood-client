@@ -16,7 +16,7 @@ const PackageDetails = () => {
 
 
     const fetchPackage = async () => {
-        const res = await axiosSecure.get(`${import.meta.env.VITE_app_url}/packages/${id}`)
+        const res = await axiosSecure.get(`/packages/${id}`)
         return res.data
     }
 
@@ -29,7 +29,7 @@ const PackageDetails = () => {
       queryKey: ["guides-by-location", packageData?.destination],
       enabled: !!packageData?.destination,   
       queryFn: async () => {
-        const res = await axiosSecure.get(`${import.meta.env.VITE_app_url}/guides/by-destination?destination=${packageData?.destination}`, )
+        const res = await axiosSecure.get(`/guides/by-destination?destination=${packageData?.destination}`, )
         return res.data
       }
     })

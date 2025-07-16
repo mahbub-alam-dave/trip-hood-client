@@ -10,7 +10,7 @@ const TripsPackage = () => {
     const { data: packages = [], isLoading, isError } = useQuery({
     queryKey: ["all-packages"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/packages");
+      const res = await axiosSecure.get(`/packages`);
       return res.data;
     },
   });

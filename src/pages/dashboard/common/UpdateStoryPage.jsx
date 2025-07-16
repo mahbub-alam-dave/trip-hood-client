@@ -86,7 +86,7 @@ const UpdateStoryPage = () => {
   const updateStoryMutation = useMutation({
   mutationFn: async (updatedData) => {
     const res = await axiosSecure.patch(
-      `${import.meta.env.VITE_app_url}/stories/update/${id}`,
+      `/stories/update/${id}`,
       updatedData
     );
     return res.data;

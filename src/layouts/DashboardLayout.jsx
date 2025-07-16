@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaPlusCircle, FaMapMarkedAlt, FaUserEdit, FaSignOutAlt, FaRegAddressCard } from "react-icons/fa";
 import { RiSuitcaseLine, RiUserSettingsLine, RiUserSearchLine } from "react-icons/ri";
@@ -6,11 +6,17 @@ import { FaBookOpen } from "react-icons/fa";
 import { RiGuideLine } from "react-icons/ri";
 import Footer from "../components/sharedComponents/Footer";
 import useUserRole from "../utility/hooks/useUserRole";
+import { ContextValues } from "../utility/contexts/ContextValue";
+import useThemeMode from "../utility/hooks/useThemeMode";
+import logoDark from '../assets/logoDark.png'
+import logoLight from '../assets/logoLight.png'
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const {role, roleLoading} = useUserRole()
+  const {signOutUser} = useContext(ContextValues)
+  const theme = useThemeMode()
 
   const navLinks = [
     { to: "/dashboard/profile", label: "Manage Profile", icon: <FaUserCircle /> },
@@ -45,6 +51,17 @@ const DashboardLayout = () => {
   },
   ]
 
+
+  const handleLogout = () => {
+    signOutUser()
+    .then(() =>{
+      // logged out successfully
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   return (
     <div className="bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)]">
     <div className="flex max-w-[1440px] mx-auto shadow shadow-gray-300 h-screen text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
@@ -57,6 +74,7 @@ const DashboardLayout = () => {
       >
         <Link to={'/'}>
         <div className="flex items-center gap-3 mb-8">
+          <img src={logoDark} alt="" />
           <span className="text-2xl font-bold text-[var(--color-text-primary-two)]">Trip Hood</span>
         </div></Link>
 
@@ -151,7 +169,7 @@ const DashboardLayout = () => {
 
 
 
-          <button
+          <button onClick={handleLogout}
             className="flex items-center gap-3 px-3 py-2 mt-6 rounded-lg bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-[var(--color-text-primary-two)] hover:bg-red-600"
           >
             <FaSignOutAlt />
@@ -163,8 +181,13 @@ const DashboardLayout = () => {
       {/* Main Content */}
       <div className="flex flex-col flex-1 overflow-y-auto ">
         {/* Topbar */}
-        <div className="flex items-center justify-between lg:hidden px-4 py-4 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
-          <span className="text-xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)]">Trip Hood</span>
+        <div className="flex h-[96px] items-center justify-between lg:hidden px-4 sm:px-6 lg:px-8 py-8 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+          <Link to={'/'} >
+          <div className="flex gap-2 items-center cursor-pointer">
+          <img src={theme === "dark" ? logoDark : logoLight} className="w-8 h-8" alt="" />
+          <span className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)]">Trip Hood</span>
+          </div>
+          </Link>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)] text-2xl"

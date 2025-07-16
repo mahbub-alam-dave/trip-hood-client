@@ -30,7 +30,7 @@ const BookingForm = ({ packageData, guides }) => {
   // 📦 Mutation setup
   const bookingMutation = useMutation({
     mutationFn: async (bookingData) => {
-      const res = await axiosSecure.post("/bookings", bookingData);
+      const res = await axiosSecure.post(`${import.meta.env.VITE_app_url}/bookings`, bookingData);
       setBookingId(res.data.bookingId)
       return res.data;
     },

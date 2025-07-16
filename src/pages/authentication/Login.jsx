@@ -6,14 +6,17 @@ import { useContext } from "react";
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import GoogleSignIn from "../../components/sharedComponents/GoogleSignIn";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
+import LoginSuccessRedirector from "../../utility/hooks/LoginSuccessRedirector";
+// import { useRoleBasedRedirect } from "../../utility/hooks/useRoleBasedRedirect";
+// import useUserRole from "../../utility/hooks/useUserRole";
 
 const Login = () => {
   const { loginUser } = useContext(ContextValues);
-  const navigate = useNavigate();
   const simpleAxios = useSimpleAxios()
 
-  const location = useLocation()
-
+  // const location = useLocation()
+  // const {role} = useUserRole()
+  // const redirectAfterLogin = useRoleBasedRedirect(role);
 
   const {
     register,
@@ -48,7 +51,8 @@ const Login = () => {
           showConfirmButton: false,
         });
         reset();
-        navigate(location.state || '/');
+        // navigate(location.state || '/');
+        // redirectAfterLogin()
       })
       .catch((error) =>
         Swal.fire({
@@ -133,6 +137,7 @@ const Login = () => {
           Register here
         </Link>
       </p>
+      <LoginSuccessRedirector />
     </div>
   );
 };

@@ -17,7 +17,7 @@ const TourGuidesTab = () => {
   const axiosSecure = useAxiosSecure()
   
   const fetchGuides = async () => {
-    const res = await axiosSecure.get("/guides/random");
+    const res = await axiosSecure.get(`/guides/random`);
     return res.data;
   };
 

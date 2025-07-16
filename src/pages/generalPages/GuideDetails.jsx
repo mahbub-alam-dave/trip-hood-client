@@ -1,5 +1,5 @@
 import { FaStar, FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheckCircle } from "react-icons/fa";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -8,6 +8,7 @@ const GuideDetails = () => {
  
     const {id} = useParams()
     const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate()
 
      const { data: guide, isLoading, isError } = useQuery({
     queryKey: ["guide-details", id],
@@ -130,12 +131,12 @@ const GuideDetails = () => {
 
       {/* Back to guides */}
       <div className="pt-10">
-        <Link
-          to="/guides"
+        <button
+          onClick={() => navigate(-1)}
           className="inline-block px-6 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-lg hover:bg-[var(--color-primary-dark)] transition"
         >
           Back to All Guides
-        </Link>
+        </button>
       </div>
     </div>
   );

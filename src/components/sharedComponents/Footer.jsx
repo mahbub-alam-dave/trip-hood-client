@@ -1,7 +1,11 @@
 import { Link } from "react-router";
 import { FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
+import logoLight from '../../assets/logoLight.png'
+import logoDark from '../../assets/logoDark.png'
+import useThemeMode from "../../utility/hooks/useThemeMode";
 
 const Footer = () => {
+  const theme = useThemeMode()
   return (
 <footer className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] mt-20">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -9,6 +13,7 @@ const Footer = () => {
     {/* Logo and site name */}
     <div className="flex flex-col items-center md:items-start gap-3">
       <div className="flex items-center gap-3">
+        <img src={theme === "dark" ? logoDark : logoLight } alt="" />
         <span className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Trip Hood</span>
       </div>
       <p className="text-base text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] text-center md:text-left">

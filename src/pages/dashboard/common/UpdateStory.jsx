@@ -22,7 +22,7 @@ const UpdateStory = () => {
   const { data: story, isLoading } = useQuery({
     queryKey: ["story", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_app_url}/stories/${id}`);
+      const res = await axiosSecure.get(`/stories/${id}`);
       return res.data;
     },
   });
@@ -80,7 +80,7 @@ const UpdateStory = () => {
   const updateStoryMutation = useMutation({
     mutationFn: async (updatedData) => {
       const res = await axiosSecure.patch(
-        `${import.meta.env.VITE_app_url}/stories/update/${id}`,
+        `/stories/update/${id}`,
         updatedData
       );
       return res.data;

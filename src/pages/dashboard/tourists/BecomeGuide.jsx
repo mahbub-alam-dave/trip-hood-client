@@ -31,7 +31,6 @@ const BecomeGuide = () => {
 
   const onSubmit = (data) => {
     const applicationData = {...data, email: user.email, name: user.displayName}
-    console.log(applicationData)
     mutate(applicationData);
   };
 

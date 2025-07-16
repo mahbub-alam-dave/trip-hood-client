@@ -17,7 +17,7 @@ const TouristStoryComponent = () => {
 //   }, []);
 
   const fetchStories = async () => {
-    const res = await axiosSecure.get('/stories/random')
+    const res = await axiosSecure.get(`/stories/random`)
     return res.data
   }
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
+import Pagination from "../../../components/sharedComponents/Pagination";
 
 
 const rolesOptions = [
@@ -15,14 +16,16 @@ const rolesOptions = [
 const ManageUsersPage = () => {
 
     const axiosSecure = useAxiosSecure()
-  const [searchText, setSearchText] = useState("");
+
+
+  /* const [searchText, setSearchText] = useState("");
   const [roleFilter, setRoleFilter] = useState(rolesOptions[0]);
 
   const { data: users = [], refetch, isLoading } = useQuery({
     queryKey: ["users", searchText, roleFilter.value],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `${import.meta.env.VITE_app_url}/users?search=${searchText}&role=${roleFilter.value}`
+        `/users?search=${searchText}&role=${roleFilter.value}`
       );
       return res.data;
     },
@@ -31,15 +34,44 @@ const ManageUsersPage = () => {
   useEffect(() => {
     refetch();
   }, [searchText, roleFilter, refetch]);
+ */
+
+
+  const [searchText, setSearchText] = useState("");
+const [roleFilter, setRoleFilter] = useState(rolesOptions[0]);
+const [currentPage, setCurrentPage] = useState(1);
+const itemsPerPage = 10;
+
+const { data = {}, isLoading } = useQuery({
+  queryKey: ["users", searchText, roleFilter.value, currentPage],
+  queryFn: async () => {
+    const res = await axiosSecure.get(`/users`, {
+      params: {
+        search: searchText,
+        role: roleFilter.value,
+        page: currentPage,
+        limit: itemsPerPage
+      }
+    });
+    return res.data;
+  },
+});
+
+const users = data.users || [];
+const totalUsers = data.total || 0;
+const totalPages = Math.ceil(totalUsers / itemsPerPage);
+
 
   const isDarkMode = document.documentElement.classList.contains("dark");
+
 
 const customStyles = {
   control: (base, state) => ({
     ...base,
-    backgroundColor: isDarkMode ? "#1F2937" : "#ffffff", // Tailwind: gray-800 or white
+    backgroundColor: isDarkMode ? "transparent" : "#ffffff", // Tailwind: gray-800 or white
     color: isDarkMode ? "#F9FAFB" : "#111827", // text color
     borderColor: state.isFocused ? "#3B82F6" : "#D1D5DB", // Tailwind blue-500 or gray-300
+    // borderColor: isDarkMode ? "#364153" : "#e5e7eb", // Tailwind blue-500 or gray-300
     boxShadow: "none",
     "&:hover": {
       borderColor: "#3B82F6",
@@ -80,7 +112,7 @@ const customStyles = {
         Manage Users
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
+      <div className="flex flex-col items-center md:flex-row gap-4 mb-6">
         <input
           type="text"
           placeholder="Search by name or email..."
@@ -94,7 +126,7 @@ const customStyles = {
           styles={customStyles}
           value={roleFilter}
           onChange={setRoleFilter}
-          className="w-full md:w-1/3 text-black dark:text-white"
+          className="w-full md:w-1/3 border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
         />
         
       </div>
@@ -131,6 +163,11 @@ const customStyles = {
           </tbody>
         </table>
       </div>
+    <Pagination
+  currentPage={currentPage}
+  totalPages={totalPages}
+  onPageChange={setCurrentPage}
+/>
     </div>
   );
 };
