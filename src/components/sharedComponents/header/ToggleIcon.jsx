@@ -4,11 +4,11 @@ import { MdOutlineLightMode } from "react-icons/md";
 import { ContextValues } from '../../../utility/contexts/ContextValue';
 
 
-const ToggleIcon = ({setDisplayMenu, displayMenu}) => {
+const ToggleIcon = ({menuOpen, setMenuOpen}) => {
     const {mode, setMode}= useContext(ContextValues)
     const handleChangeMode = () => {
       setMode(!mode)
-      setDisplayMenu(!displayMenu)
+      setMenuOpen(!menuOpen)
     }
     return (
 

@@ -10,6 +10,7 @@ import avatar from '../../../assets/avatar.png'
 import { FaCamera, FaUserTie } from "react-icons/fa";
 import { Link } from "react-router";
 import axios from "axios";
+import AdminStats from "./AdminStats";
 
 Modal.setAppElement("#root");
 
@@ -195,10 +196,10 @@ const handleImageChange = async (e) => {
   if(isLoading) return <span className="loading loading-spinner"></span>
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
 
-       <div className="text-center space-y-2 mb-6">
-        <h1 className="text-4xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+       <div className=" bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] shadow rounded-2xl py-8 px-6 space-y-2 mb-6 dark:border dark:border-[var(--color-border-dark)] shadow-md">
+        <h1 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
           Welcome back, {user?.displayName?.split(" ")[0]}! 👋
         </h1>
         <p className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
@@ -207,11 +208,19 @@ const handleImageChange = async (e) => {
       </div>
 
 
-      <div className="flex justify-between items-center mb-8">
-        {/* <h2 className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Profile</h2> */}
-      </div>
+      {/* <div className="flex justify-between items-center mb-8">
+        <h2 className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Profile</h2>
+      </div> */}
 
-      <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-sm dark:shadow-gray-500 p-6">
+      {
+        userData.role === "admin" &&
+        <AdminStats />
+      }
+        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
+          Profile Details
+        </h3>
+
+      <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-md dark:border dark:border-[var(--color-border-dark)] p-6">
       <div className="flex-1 space-y-4">
         <img
     src={userData?.photo || avatar}

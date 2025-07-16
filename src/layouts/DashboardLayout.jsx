@@ -47,7 +47,7 @@ const DashboardLayout = () => {
 
   return (
     <div className="bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)]">
-    <div className="flex max-w-[1440px] mx-auto shadow-xl h-screen bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+    <div className="flex max-w-[1440px] mx-auto shadow shadow-gray-300 h-screen text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
 
       {/* Sidebar */}
       <div

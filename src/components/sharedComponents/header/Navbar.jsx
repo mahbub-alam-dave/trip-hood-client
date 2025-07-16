@@ -63,7 +63,7 @@ const Navbar = () => {
           ) : (
             <NavLink to="/login" className="px-6 py-3 font-semibold bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] rounded-lg hover:bg-blue-600 transition">Login</NavLink>
           )}
-            <ToggleIcon />
+            <ToggleIcon setMenuOpen={setMenuOpen} menuOpen={setMenuOpen}/>
         </nav>
 
         {/* Mobile menu button */}
