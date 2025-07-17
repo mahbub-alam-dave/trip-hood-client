@@ -10,7 +10,7 @@ const Root = () => {
             <div className='min-h-[60vh]'>
             <Outlet />
             </div>
-            <Footer />
+            <Footer location="root"/>
         </div>
     );
 };

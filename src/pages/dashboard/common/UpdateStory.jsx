@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -7,12 +7,14 @@ import { useForm } from "react-hook-form";
 import { FaTimes } from "react-icons/fa";
 import { ClipLoader } from "react-spinners"; // loader spinner
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
+import Loading from "../../../components/sharedComponents/Loading";
 
 const UpdateStory = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
   const { register, handleSubmit, setValue } = useForm();
+  const navigate = useNavigate()
 
   const [existingImages, setExistingImages] = useState([]);
   const [removeImages, setRemoveImages] = useState([]);
@@ -90,6 +92,7 @@ const UpdateStory = () => {
       queryClient.invalidateQueries(["stories-by-user"]);
       setNewImages([]); // clear images after update
       setRemoveImages([]);
+      navigate(-1)
     },
     onError: (error) => {
       console.error(error);
@@ -119,7 +122,7 @@ const UpdateStory = () => {
     updateStoryMutation.mutate(updatedData);
   };
 
-  if (isLoading) return <p className="text-center mt-20">Loading Story...</p>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="max-w-3xl mx-auto mt-8">
@@ -145,11 +148,11 @@ const UpdateStory = () => {
         <div>
           <label>Category</label>
           <select {...register("category", { required: "Category is required" })} className="input-style w-full">
-            <option value="">Select Category</option>
-            <option value="Nature">Nature</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Culture">Culture</option>
-            <option value="Beach">Beach</option>
+            <option className="dark:bg-gray-700" value="">Select Category</option>
+            <option className="dark:bg-gray-700" value="Nature">Nature</option>
+            <option className="dark:bg-gray-700" value="Adventure">Adventure</option>
+            <option className="dark:bg-gray-700" value="Culture">Culture</option>
+            <option className="dark:bg-gray-700" value="Beach">Beach</option>
           </select>
         </div>
 

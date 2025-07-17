@@ -5,7 +5,7 @@ const PartnersShowcase = () => {
     { id: 3, name: "Breeze Airlines", logo: "https://i.ibb.co/LzrhX86R/Green-white-Modern-car-service-Logo.png", website: "#" },
     { id: 4, name: "NextStay Inn", logo: "https://i.ibb.co/wrjkKSjM/Red-Blue-Modern-Logistics-Express-Logo.png", website: "#" },
     { id: 5, name: "Horizon Cabs", logo: "https://i.ibb.co/Kc8XTZBr/Blue-and-White-Modern-Hotel-Logo-1.png", website: "#" },
-    { id: 5, name: "Horizon Cabs", logo: "https://i.ibb.co/GfY2BNsV/Black-Gold-Simple-Modern-Villa-Homestay-Logo.png", website: "#" },
+    { id: 6, name: "Horizon Cabs", logo: "https://i.ibb.co/GfY2BNsV/Black-Gold-Simple-Modern-Villa-Homestay-Logo.png", website: "#" },
   ];
 
  

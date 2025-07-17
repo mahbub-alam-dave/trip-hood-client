@@ -56,8 +56,25 @@ const BookingForm = ({ packageData, guides }) => {
   const onSubmit = (data) => {
 
     if(!user) {
-      navigate('/login')
-      return
+       Swal.fire({
+        title: 'Authentication Required',
+        text: 'Please log in to access this page.',
+        icon: 'warning', 
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login',
+        cancelButtonText: 'Cancel',
+        allowOutsideClick: false, 
+        allowEscapeKey: false 
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // User clicked "Login", navigate to the login page
+            navigate('/login');
+        }
+        // If user clicked "Cancel" or dismissed, the alert simply closes
+    });
+    return;
     }
 
     const { selectedGuide, ...restData } = data;

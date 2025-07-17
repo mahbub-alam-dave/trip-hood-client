@@ -177,14 +177,16 @@ const DashboardLayout = () => {
             </div>
 
             {/* Page Content */}
-            <div className="flex-1 lg:ml-82 overflow-y-auto px-4 sm:px-6 lg:px-8 py-8">
-              <Outlet />
-            </div>
-
+            <div className="flex-1 lg:ml-82 overflow-y-auto ">
+              <div className="px-4 sm:px-6 lg:px-8 pt-8 min-h-[60vh]">
+                <Outlet />
+              </div>
             {/* Footer */}
             <div className="">
-              <Footer />
+              <Footer location="dashboard"/>
             </div>
+            </div>
+
           </div>
         </div>
       </div>

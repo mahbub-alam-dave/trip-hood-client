@@ -5,6 +5,7 @@ import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
 import avatar from '../../assets/avatar.png'
+import LoginSuccessRedirector from "../../utility/hooks/LoginSuccessRedirector";
 
 const GoogleSignIn = () => {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ const GoogleSignIn = () => {
         <FaGoogle />
         Sign in with Google
       </button>
+      <LoginSuccessRedirector />
     </div>
   );
 };
