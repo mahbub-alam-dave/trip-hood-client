@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
+import Loading from "../sharedComponents/Loading";
 
 // const fetchPackages = async () => {
 //   const res = await axiosSecure.get("/packages");
@@ -25,7 +26,7 @@ const TourPackagesTab = () => {
   });
 
 
-  if (isLoading) return <div>Loading tour packages...</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>Error loading packages</div>;
 
   return (

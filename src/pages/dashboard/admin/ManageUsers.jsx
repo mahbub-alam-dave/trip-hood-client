@@ -4,6 +4,7 @@ import Select from "react-select";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import Pagination from "../../../components/sharedComponents/Pagination";
+import NoData from "../../../components/sharedComponents/NoData";
 
 
 const rolesOptions = [
@@ -103,7 +104,9 @@ const customStyles = {
   }),
 };
 
-
+    if(!users || users.length === 0) {
+      return <NoData message="No users found"/>
+    }
 
 
   return (
@@ -145,10 +148,6 @@ const customStyles = {
             {isLoading ? (
               <tr>
                 <td colSpan="4" className="text-center py-8">Loading...</td>
-              </tr>
-            ) : users.length === 0 ? (
-              <tr>
-                <td colSpan="4" className="text-center py-8">No users found</td>
               </tr>
             ) : (
               users.map((user) => (

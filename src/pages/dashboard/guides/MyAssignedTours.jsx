@@ -4,6 +4,8 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 import { useContext } from "react";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
+import NoData from "../../../components/sharedComponents/NoData";
+
 
 
 const MyAssignedTours = () => {
@@ -53,11 +55,15 @@ const MyAssignedTours = () => {
 
   if (isLoading) return <p className="text-center py-10">Loading tours...</p>;
 
+  if(assignedTours.length === 0) {
+    return <NoData message="No assigned tours found"/>
+  }
+
   return (
     <div className="py-8">
       <h2 className="text-2xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Assigned Tours</h2>
 
-      <div className="overflow-x-auto rounded-lg shadow dark:shadow-gray-300">
+      <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
         <table className="w-full table-auto border-collapse">
           <thead className="bg-[var(--color-secondary)] dark:bg-[var(--color-secondary-dark)] ">
             <tr>
@@ -120,13 +126,13 @@ const MyAssignedTours = () => {
               </tr>
             ))}
 
-            {assignedTours.length === 0 && (
+            {/* {assignedTours.length === 0 && (
               <tr>
                 <td colSpan="6" className="text-center py-6 text-gray-500">
                   No assigned tours found.
                 </td>
               </tr>
-            )}
+            )} */}
           </tbody>
         </table>
       </div>

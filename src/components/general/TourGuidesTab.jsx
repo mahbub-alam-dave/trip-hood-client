@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
+import Loading from "../sharedComponents/Loading";
 
 // const fetchGuides = async () => {
 //   const res = await axiosSecure.get("/guides");
@@ -26,9 +27,8 @@ const TourGuidesTab = () => {
     queryFn: fetchGuides,
   });
 
-  console.log(guides)
 
-  if (isLoading) return <div>Loading tour guides...</div>;
+    if (isLoading) return <Loading />;
   if (isError) return <div>Error loading guides</div>;
 
   return (

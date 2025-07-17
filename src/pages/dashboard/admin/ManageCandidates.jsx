@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import { Dialog } from "@headlessui/react";
 import { FaUserCheck, FaUserTimes, FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import NoData from "../../../components/sharedComponents/NoData";
 
 const ManageCandidates = () => {
 
@@ -40,7 +41,6 @@ const ManageCandidates = () => {
   });
 
   const handleAccept = (applicationData) => {
-    console.log(applicationData)
     acceptMutation.mutate(applicationData, {
       onSuccess: () => {
         Swal.fire("Accepted!", "The application has been accepted.", "success");
@@ -85,6 +85,9 @@ const ManageCandidates = () => {
   };
 
   if (isLoading) return <p>Loading candidates...</p>;
+      if(!applications || applications.length === 0) {
+        return <NoData message="No application found"/>
+      }
 
   return (
     <div className="pt-8">
@@ -128,13 +131,6 @@ const ManageCandidates = () => {
                 </td>
               </tr>
             ))}
-            {applications.length === 0 && (
-              <tr>
-                <td colSpan="3" className="text-center py-4 text-gray-500">
-                  No pending applications found.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>

@@ -30,7 +30,7 @@ const BecomeGuide = () => {
   });
 
   const onSubmit = (data) => {
-    const applicationData = {...data, email: user.email, name: user.displayName}
+    const applicationData = {...data, email: user.email, name: user?.displayName, photo: user?.photoURL}
     mutate(applicationData);
   };
 

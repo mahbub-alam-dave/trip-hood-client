@@ -17,6 +17,9 @@ const TripsPackage = () => {
 
   if (isLoading) return <div className="text-center py-10">Loading packages...</div>;
   if (isError) return <div className="text-center text-[var(--color-accent)] dark:text-[var(--color-accent-two)] py-10">Failed to load packages.</div>;
+      if(!packages || packages.length === 0) {
+        return <NoData message="You haven't added any stories yet"/>
+      }
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">

@@ -21,6 +21,10 @@ const CommunityPage = () => {
   if (isLoading) return <div className="text-center py-10">Loading stories...</div>;
   if (isError) return <div className="text-center text-red-500 py-10">Failed to load stories.</div>;
 
+      if(!stories || stories.length === 0) {
+      return <NoData message="You haven't added any stories yet"/>
+    }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <h1 className="text-4xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-12 text-center">

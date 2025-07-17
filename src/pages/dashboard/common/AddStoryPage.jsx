@@ -113,7 +113,7 @@ export default function AddStoryPage() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-5 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] p-6 rounded-lg shadow shadow-gray-300"
+        className="space-y-5 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] p-6 py-8 rounded-lg shadow "
       >
         {/* Title */}
         <div>
@@ -152,11 +152,11 @@ export default function AddStoryPage() {
             {...register("category", { required: "Category is required" })}
             className="mt-2 input-style w-full"
           >
-            <option value="">Select Category</option>
-            <option value="Nature">Nature</option>
-            <option value="Culture">Culture</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Beach">Beach</option>
+            <option className="dark:bg-gray-700" value="Nature">Nature</option>
+            <option className="dark:bg-gray-700" value="Culture">Culture</option>
+            <option className="dark:bg-gray-700" value="">Select Category</option>
+            <option className="dark:bg-gray-700" value="Adventure">Adventure</option>
+            <option className="dark:bg-gray-700" value="Beach">Beach</option>
           </select>
           {errors.category && (
             <p className="text-[var(--color-accent)] dark:text-[var(--color-accent-dark)] text-sm">

@@ -5,6 +5,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useContext } from "react";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
+import NoData from "../../../components/sharedComponents/NoData";
 
 const ManageStories = () => {
   const { user } = useContext(ContextValues);
@@ -50,17 +51,16 @@ const ManageStories = () => {
 
   if (isLoading) return <p>Loading your stories...</p>;
 
+    if(!stories || stories.length === 0) {
+      return <NoData message="You haven't added any stories yet"/>
+    }
+
   return (
     <div className="py-8">
       <h2 className="text-3xl font-bold  mb-6">
         My Stories
       </h2>
 
-      {stories.length === 0 ? (
-        <div className="text-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] py-20">
-          <p className="text-lg">You haven’t added any stories yet.</p>
-        </div>
-      ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {stories.map((story) => (
             <div
@@ -103,7 +103,6 @@ const ManageStories = () => {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 };

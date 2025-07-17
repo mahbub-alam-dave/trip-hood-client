@@ -22,7 +22,6 @@ const GuideDetails = () => {
   if (isLoading) return <div className="text-center py-10">Loading guide details...</div>;
   if (isError) return <div className="text-center py-10 text-red-500">Failed to load guide.</div>;
  
- console.log(guide)
  
     if (!guide) return null;
 

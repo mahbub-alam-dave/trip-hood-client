@@ -1,16 +1,20 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaMoneyBillWave, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import NoData from "../../../components/sharedComponents/NoData";
+import Congratulations from "../../../components/general/Congratulations";
 
 
 const MyBookings = () => {
   
   const { user } = useContext(ContextValues);
   const axiosSecure = useAxiosSecure()
+
+  const [showCongrats, setShowCongrats] = useState(false);
 
     const queryClient = useQueryClient();
 
@@ -52,8 +56,17 @@ const handleCancelBooking = (id) => {
 };
 
 
+  useEffect(() => {
+    if (bookings.length > 3) {
+      setShowCongrats(true);
+    }
+  }, [bookings]);
+
 
   if (isLoading) return <div className="text-center py-20">Loading your bookings...</div>;
+    if(!bookings || bookings.length === 0) {
+    return <NoData message="No bookings found"/>
+  }
 
   return (
     <div className="max-w-7xl mx-auto py-8">
@@ -72,13 +85,6 @@ const handleCancelBooking = (id) => {
             </tr>
           </thead>
           <tbody className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
-            {bookings.length === 0 && (
-              <tr>
-                <td colSpan="6" className="text-center py-6 text-[var(--color-text-secondary)]">
-                  No bookings found.
-                </td>
-              </tr>
-            )}
 
             {bookings.map((booking) => (
               <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:bg-gray-50 dark:hover:bg-gray-800 transition">
@@ -111,6 +117,9 @@ const handleCancelBooking = (id) => {
           </tbody>
         </table>
       </div>
+      {showCongrats && (
+        <Congratulations onClose={() => setShowCongrats(false)} />
+      )}
     </div>
   );
 };
