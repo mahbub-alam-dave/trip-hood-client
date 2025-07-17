@@ -1,10 +1,18 @@
 // utils/handleRedirect.js
 
 import { useNavigate, useLocation } from "react-router";
+import Loading from "../../components/sharedComponents/Loading";
+import { useContext } from "react";
+import { ContextValues } from "../contexts/ContextValue";
+import useUserRole from "./useUserRole";
 
 export const useRoleBasedRedirect = (userRole) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {loading} = useContext(ContextValues)
+  const {roleLoading} = useContext(useUserRole)
+
+  if(loading || roleLoading) return <Loading />
 
   return () => {
     const from = location.state || null;

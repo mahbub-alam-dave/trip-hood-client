@@ -6,6 +6,7 @@ import { MdCategory } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
 import ImageSlider from "../../components/sharedComponents/ImageSlider";
+import Loading from "../../components/sharedComponents/Loading";
 
 const CommunityPage = () => {
 
@@ -19,7 +20,7 @@ const CommunityPage = () => {
     },
   });
 
-  if (isLoading) return <div className="text-center py-10">Loading stories...</div>;
+  if (isLoading) return <Loading />
   if (isError) return <div className="text-center text-red-500 py-10">Failed to load stories.</div>;
 
       if(!stories || stories.length === 0) {

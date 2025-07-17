@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import useAxiosSecure from '../../../utility/hooks/useAxiosSecure'
+import Loading from "../../../components/sharedComponents/Loading";
 
 
 
@@ -120,7 +121,7 @@ const UpdateStoryPage = () => {
     updateStoryMutation.mutate(updatedData);
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />
 
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">

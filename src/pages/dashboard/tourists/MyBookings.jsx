@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router";
 import NoData from "../../../components/sharedComponents/NoData";
 import Congratulations from "../../../components/general/Congratulations";
+import Loading from "../../../components/sharedComponents/Loading";
 
 
 const MyBookings = () => {
@@ -63,7 +64,7 @@ const handleCancelBooking = (id) => {
   }, [bookings]);
 
 
-  if (isLoading) return <div className="text-center py-20">Loading your bookings...</div>;
+  if (isLoading) return <Loading />
     if(!bookings || bookings.length === 0) {
     return <NoData message="No bookings found"/>
   }

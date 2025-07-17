@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import Loading from "../../../components/sharedComponents/Loading";
 
 const AdminStats = () => {
 
@@ -69,7 +70,7 @@ const AdminStats = () => {
   const chartData = stats.filter(stat => stat.label !== "Total Payment");
 
 
-  if (isLoading) return <p className="text-center text-gray-500">Loading stats...</p>;
+  if (isLoading) return <Loading />
 
   return (
     <div className="space-y-6 my-8">

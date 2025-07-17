@@ -5,6 +5,7 @@ import { useContext } from "react";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import NoData from "../../../components/sharedComponents/NoData";
+import Loading from "../../../components/sharedComponents/Loading";
 
 
 
@@ -53,7 +54,7 @@ const MyAssignedTours = () => {
     });
   };
 
-  if (isLoading) return <p className="text-center py-10">Loading tours...</p>;
+  if (isLoading) return <Loading />
 
   if(assignedTours.length === 0) {
     return <NoData message="No assigned tours found"/>

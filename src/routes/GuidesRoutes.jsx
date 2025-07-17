@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { ContextValues } from '../utility/contexts/ContextValue';
 import { Navigate } from 'react-router';
 import useUserRole from '../utility/hooks/useUserRole';
+import Loading from '../components/sharedComponents/Loading';
 
 const GuidesRoutes = ({children}) => {
     
@@ -11,7 +12,7 @@ const GuidesRoutes = ({children}) => {
 
 
     if(loading || roleLoading) {
-        return <span className='loading loading-spinner'></span>
+        return <Loading />
     }
 
     if(!user || role !== "tour_guide") {

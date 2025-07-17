@@ -5,6 +5,7 @@ import { Dialog } from "@headlessui/react";
 import { FaUserCheck, FaUserTimes, FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import NoData from "../../../components/sharedComponents/NoData";
+import Loading from "../../../components/sharedComponents/Loading";
 
 const ManageCandidates = () => {
 
@@ -84,7 +85,7 @@ const ManageCandidates = () => {
     setIsModalOpen(false);
   };
 
-  if (isLoading) return <p>Loading candidates...</p>;
+  if (isLoading) return <Loading />
       if(!applications || applications.length === 0) {
         return <NoData message="No application found"/>
       }

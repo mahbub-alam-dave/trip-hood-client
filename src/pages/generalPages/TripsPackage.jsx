@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosSecure from '../../utility/hooks/useAxiosSecure';
 import TripPackageCard from '../../components/general/TripPackageCard';
+import Loading from '../../components/sharedComponents/Loading';
 
 const TripsPackage = () => {
 
@@ -15,7 +16,7 @@ const TripsPackage = () => {
     },
   });
 
-  if (isLoading) return <div className="text-center py-10">Loading packages...</div>;
+  if (isLoading) return <Loading />
   if (isError) return <div className="text-center text-[var(--color-accent)] dark:text-[var(--color-accent-two)] py-10">Failed to load packages.</div>;
       if(!packages || packages.length === 0) {
         return <NoData message="You haven't added any stories yet"/>

@@ -7,6 +7,7 @@ import { ContextValues } from "../../../utility/contexts/ContextValue";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import NoData from "../../../components/sharedComponents/NoData";
 import ImageSlider from "../../../components/sharedComponents/ImageSlider";
+import Loading from "../../../components/sharedComponents/Loading";
 
 const ManageStories = () => {
   const { user } = useContext(ContextValues);
@@ -50,7 +51,7 @@ const ManageStories = () => {
     });
   };
 
-  if (isLoading) return <p>Loading your stories...</p>;
+  if (isLoading) return <Loading />
 
     if(!stories || stories.length === 0) {
       return <NoData message="You haven't added any stories yet"/>

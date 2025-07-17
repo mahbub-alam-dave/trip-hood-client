@@ -13,6 +13,7 @@ import axios from "axios";
 import AdminStats from "./AdminStats";
 import SimpleModal from "../../../components/modals/SimpleModal";
 import EditProfileModal from "../../../components/modals/EditProfileModal";
+import Loading from "../../../components/sharedComponents/Loading";
 
 Modal.setAppElement("#root");
 
@@ -196,7 +197,7 @@ const handleImageChange = async (e) => {
 };
 
 
-  if(isLoading) return <span className="loading loading-spinner"></span>
+  if(isLoading) return <Loading />
 
   return (
     <div className="mt-4">

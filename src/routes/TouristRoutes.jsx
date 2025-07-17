@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ContextValues } from '../utility/contexts/ContextValue';
 import useUserRole from '../utility/hooks/useUserRole';
+import Loading from '../components/sharedComponents/Loading';
 
 const TouristRoutes = ({children}) => {
     
@@ -10,7 +11,7 @@ const TouristRoutes = ({children}) => {
 
 
     if(loading || roleLoading) {
-        return <span className='loading loading-spinner'></span>
+        return <Loading />
     }
 
     if(!user || role !== "tourist") {
