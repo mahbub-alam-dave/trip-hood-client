@@ -1,11 +1,19 @@
 const PartnersShowcase = () => {
   const partners = [
-    { id: 1, name: "GreenView Hostel", logo: "/assets/greenview.png", website: "#" },
-    { id: 2, name: "Skylink Transports", logo: "/assets/skylink.png", website: "#" },
-    { id: 3, name: "Breeze Airlines", logo: "/assets/breeze.png", website: "#" },
-    { id: 4, name: "NextStay Inn", logo: "/assets/nextstay.png", website: "#" },
-    { id: 5, name: "Horizon Cabs", logo: "/assets/horizon.png", website: "#" },
+    { id: 1, name: "GreenView Hostel", logo: " https://i.ibb.co/zTfQXbMS/Black-White-Simple-Staycation-House-Business-Logo.png", website: "#" },
+    { id: 2, name: "Skylink Transports", logo: "https://i.ibb.co/FknnsrJp/Black-and-Yellow-Technology-Company-Logo.png", website: "#" },
+    { id: 3, name: "Breeze Airlines", logo: "https://i.ibb.co/LzrhX86R/Green-white-Modern-car-service-Logo.png", website: "#" },
+    { id: 4, name: "NextStay Inn", logo: "https://i.ibb.co/wrjkKSjM/Red-Blue-Modern-Logistics-Express-Logo.png", website: "#" },
+    { id: 5, name: "Horizon Cabs", logo: "https://i.ibb.co/Kc8XTZBr/Blue-and-White-Modern-Hotel-Logo-1.png", website: "#" },
+    { id: 5, name: "Horizon Cabs", logo: "https://i.ibb.co/GfY2BNsV/Black-Gold-Simple-Modern-Villa-Homestay-Logo.png", website: "#" },
   ];
+
+ 
+
+
+
+
+
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
@@ -26,7 +34,7 @@ const PartnersShowcase = () => {
             <img
               src={partner.logo}
               alt={partner.name}
-              className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
+              className="h-14 w-auto rounded-lg object-contain grayscale hover:grayscale-7 transition"
             />
           </a>
         ))}

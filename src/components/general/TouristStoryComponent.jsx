@@ -29,9 +29,10 @@ const TouristStoryComponent = () => {
 
 if (isLoading) return <div>Loading tour guides...</div>;
   if (isError) return <div>Error loading guides</div>;
-
+// #121212; #101828
   return (
-    <section className="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+    <div className='bg-gray-100 dark:bg-[#141414] py-20 my-16'>
+    <section className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
         Traveler Stories
       </h2>
@@ -52,6 +53,7 @@ if (isLoading) return <div>Loading tour guides...</div>;
         </Link>
       </div>
     </section>
+    </div>
   );
 };
 

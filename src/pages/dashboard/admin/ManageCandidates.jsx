@@ -90,8 +90,8 @@ const ManageCandidates = () => {
       }
 
   return (
-    <div className="pt-8">
-      <h2 className="text-2xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Guide Applications</h2>
+    <div className="">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Guide Applications</h2>
     <div className=" bg-[var9--color-bg-primary] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow">
       <div className="overflow-x-auto rounded-lg">
         <table className="min-w-full table-auto rounded-lg">

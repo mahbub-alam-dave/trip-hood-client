@@ -7,7 +7,7 @@ const destinations = [
 ];
 const TopDestinations = () => {
     return (
-<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
   <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Top Tourist Destinations</h2>
   <div className="flex overflow-x-auto gap-4">
   {destinations.map(dest => (

@@ -104,14 +104,14 @@ const customStyles = {
   }),
 };
 
-    if(!users || users.length === 0) {
-      return <NoData message="No users found"/>
-    }
+    // if(!users || users.length === 0) {
+    //   return <NoData message="No users found"/>
+    // }
 
 
   return (
-    <div className=" max-w-7xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+    <div className="">
+      <h2 className="text-2xl lg:text-3xl font-semibold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Manage Users
       </h2>
 

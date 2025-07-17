@@ -107,7 +107,7 @@ export default function AddStoryPage() {
 
   return (
     <div className="max-w-3xl mx-auto pt-8">
-      <h2 className="text-2xl font-bold text-center mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Share Your Travel Story
       </h2>
 

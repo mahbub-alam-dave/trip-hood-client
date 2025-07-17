@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
-import { Link, NavLink, Outlet } from "react-router";
-import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaPlusCircle, FaMapMarkedAlt, FaUserEdit, FaSignOutAlt, FaRegAddressCard } from "react-icons/fa";
+import { Outlet, NavLink, Link } from "react-router";
+import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaBookOpen, FaPlusCircle, FaMapMarkedAlt, FaUserEdit, FaSignOutAlt, FaRegAddressCard } from "react-icons/fa";
 import { RiSuitcaseLine, RiUserSettingsLine, RiUserSearchLine } from "react-icons/ri";
-import { FaBookOpen } from "react-icons/fa";
-import { RiGuideLine } from "react-icons/ri";
-import Footer from "../components/sharedComponents/Footer";
-import useUserRole from "../utility/hooks/useUserRole";
-import { ContextValues } from "../utility/contexts/ContextValue";
-import useThemeMode from "../utility/hooks/useThemeMode";
-import logoDark from '../assets/logoDark.png'
-import logoLight from '../assets/logoLight.png'
+// import your logos and nav links here
+import logoDark from "../assets/logoDark.png";
+import logoLight from "../assets/logoLight.png";
+import {ContextValues} from "../utility/contexts/ContextValue"
+import useUserRole from "../utility/hooks/useUserRole"
+import useThemeMode from "../utility/hooks/useThemeMode"
+import Footer from "../components/sharedComponents/Footer"
+
+
+
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -63,151 +65,129 @@ const DashboardLayout = () => {
   }
 
   return (
-    <div className="bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)]">
-    <div className="flex max-w-[1440px] mx-auto shadow shadow-gray-300 h-screen text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
-
-      {/* Sidebar */}
-      <div
-        className={`fixed top-0 left-0 h-full w-64 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] border-r border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-6 py-8 transition-transform duration-300 z-50 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:static`}
-      >
-        <Link to={'/'}>
-        <div className="flex items-center gap-3 mb-8">
-          <img src={logoDark} alt="" />
-          <span className="text-2xl font-bold text-[var(--color-text-primary-two)]">Trip Hood</span>
-        </div></Link>
-
-        <nav className="flex flex-col gap-6">
-
-            {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
-                  isActive
-                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
-                    : ""
-                }`
-              }
-              onClick={() => setSidebarOpen(false)}
-            >
-              {link.icon}
-              <span className="text-base font-medium">{link.label}</span>
-            </NavLink>
-          ))}
-
-            {
-            !roleLoading && role==="tour_guide" &&
-            <>
-            {guidesLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
-                  isActive
-                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
-                    : ""
-                }`
-              }
-              onClick={() => setSidebarOpen(false)}
-            >
-              {link.icon}
-              <span className="text-base font-medium">{link.label}</span>
-            </NavLink>
-          ))}</>
-          }
-
-          {
-            !roleLoading && role==="admin" &&
-            <>
-            {AdminLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
-                  isActive
-                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
-                    : ""
-                }`
-              }
-              onClick={() => setSidebarOpen(false)}
-            >
-              {link.icon}
-              <span className="text-base font-medium">{link.label}</span>
-            </NavLink>
-          ))}
-          </>
-          }
-
-
-          {/* tourist links */}
-          { !roleLoading && role==="tourist" && 
-          <>
-          {touristLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `flex items-center text-[var(--color-text-primary-two)] gap-3 px-3 py-2 rounded-lg transition ${
-                  isActive
-                    ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]"
-                    : ""
-                }`
-              }
-              onClick={() => setSidebarOpen(false)}
-            >
-              {link.icon}
-              <span className="text-base font-medium">{link.label}</span>
-            </NavLink>
-          ))}
-          </>
-        }
-
-
-
-          <button onClick={handleLogout}
-            className="flex items-center gap-3 px-3 py-2 mt-6 rounded-lg bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-[var(--color-text-primary-two)] hover:bg-red-600"
+    <div className="min-h-screen bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)] text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <div className="flex justify-center">
+        {/* Wrapper with max width (entire dashboard incl. sidebar) */}
+        <div className="flex w-full ">
+          
+          {/* Sidebar */}
+          <div
+            className={`fixed top-0 left-0 h-full w-82 z-50 p-8 bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] border-r border-[var(--color-border)] dark:border-[var(--color-border-dark)] transition-transform duration-300 ${
+              sidebarOpen ? "translate-x-0" : "-translate-x-full"
+            } lg:translate-x-0 `}
           >
-            <FaSignOutAlt />
-            <span className="text-base font-medium">Logout</span>
-          </button>
-        </nav>
-      </div>
+            <Link to={'/'}>
+              <div className="flex items-center gap-3 mb-8">
+                <img src={logoDark} alt="Trip Hood" />
+                <span className="text-2xl font-bold text-[var(--color-text-primary-two)]">Trip Hood</span>
+              </div>
+            </Link>
 
-      {/* Main Content */}
-      <div className="flex flex-col flex-1 overflow-y-auto ">
-        {/* Topbar */}
-        <div className="flex h-[96px] items-center justify-between lg:hidden px-4 sm:px-6 lg:px-8 py-8 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
-          <Link to={'/'} >
-          <div className="flex gap-2 items-center cursor-pointer">
-          <img src={theme === "dark" ? logoDark : logoLight} className="w-8 h-8" alt="" />
-          <span className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)]">Trip Hood</span>
+            <nav className="flex flex-col gap-6">
+              {navLinks.map(link => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2 rounded-lg transition text-[var(--color-text-primary-two)] ${
+                      isActive ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]" : ""
+                    }`
+                  }
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {link.icon}
+                  <span className="text-base font-medium">{link.label}</span>
+                </NavLink>
+              ))}
+
+              {!roleLoading && role === "tour_guide" && guidesLinks.map(link => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2 rounded-lg transition text-[var(--color-text-primary-two)] ${
+                      isActive ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]" : ""
+                    }`
+                  }
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {link.icon}
+                  <span className="text-base font-medium">{link.label}</span>
+                </NavLink>
+              ))}
+
+              {!roleLoading && role === "admin" && AdminLinks.map(link => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2 rounded-lg transition text-[var(--color-text-primary-two)] ${
+                      isActive ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]" : ""
+                    }`
+                  }
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {link.icon}
+                  <span className="text-base font-medium">{link.label}</span>
+                </NavLink>
+              ))}
+
+              {!roleLoading && role === "tourist" && touristLinks.map(link => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2 rounded-lg transition text-[var(--color-text-primary-two)] ${
+                      isActive ? "bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)]" : ""
+                    }`
+                  }
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {link.icon}
+                  <span className="text-base font-medium">{link.label}</span>
+                </NavLink>
+              ))}
+
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-3 px-3 py-2 mt-6 rounded-lg bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-[var(--color-text-primary-two)] hover:bg-red-600"
+              >
+                <FaSignOutAlt />
+                <span className="text-base font-medium">Logout</span>
+              </button>
+            </nav>
           </div>
-          </Link>
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)] text-2xl"
-          >
-            {sidebarOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
 
-        {/* Dynamic Page Content */}
-        <div id="dashboard-content" className="flex-1 relative px-4 py-8 sm:px-6 lg:px-8">
-          <Outlet />
-        </div>
+          {/* Main Content */}
+          <div className="flex flex-col flex-1 min-h-screen overflow-hidden">
+            {/* Topbar - Only visible on mobile */}
+            <div className="lg:hidden flex items-center justify-between px-4 py-6 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+              <Link to={'/'}>
+                <div className="flex items-center gap-2">
+                  <img src={theme === "dark" ? logoDark : logoLight} className="w-8 h-8" alt="Logo" />
+                  <span className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)]">Trip Hood</span>
+                </div>
+              </Link>
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-dark)] text-2xl"
+              >
+                {sidebarOpen ? <FaTimes /> : <FaBars />}
+              </button>
+            </div>
 
-        {/* Footer */}
-{/*         <footer className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-6 text-center text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
-          &copy; {new Date().getFullYear()} Trip Hood — All rights reserved.
-        </footer> */}
-        <Footer />
+            {/* Page Content */}
+            <div className="flex-1 lg:ml-82 overflow-y-auto px-4 sm:px-6 lg:px-8 py-8">
+              <Outlet />
+            </div>
+
+            {/* Footer */}
+            <div className="">
+              <Footer />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

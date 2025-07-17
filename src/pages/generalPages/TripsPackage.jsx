@@ -23,7 +23,7 @@ const TripsPackage = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
-      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8">
+      <h1 className="text-2xl lg:text-3xl text-center font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8">
         All Tour Packages
       </h1>
 

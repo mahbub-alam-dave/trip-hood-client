@@ -27,6 +27,7 @@ import AddPackage from "../pages/dashboard/admin/AddPackage";
 import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 import ManageCandidates from "../pages/dashboard/admin/ManageCandidates";
 import MyAssignedTours from "../pages/dashboard/guides/MyAssignedTours";
+import ErrorPage from "../components/general/ErrorPage";
 
 export const router = createBrowserRouter([
     {
@@ -128,5 +129,9 @@ export const router = createBrowserRouter([
     {
         path: 'forbidden',
         element: <Forbidden />
+    },
+    {
+        path: "*",
+        element: <ErrorPage />
     }
 ])

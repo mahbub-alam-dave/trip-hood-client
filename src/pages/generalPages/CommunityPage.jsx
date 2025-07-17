@@ -5,6 +5,7 @@ import { FaEye, FaCommentDots } from "react-icons/fa";
 import { MdCategory } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
+import ImageSlider from "../../components/sharedComponents/ImageSlider";
 
 const CommunityPage = () => {
 
@@ -27,7 +28,7 @@ const CommunityPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="text-4xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-12 text-center">
+      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-12 text-center">
         📖 Traveler Stories from Our Community
       </h1>
 
@@ -37,12 +38,15 @@ const CommunityPage = () => {
             key={story._id}
             className="rounded-xl overflow-hidden shadow-sm border border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:shadow-lg bg-white dark:bg-[var(--color-bg-primary-dark)] transition"
           >
-            <div className="h-56 w-full overflow-hidden">
+{/*             <div className="h-56 w-full overflow-hidden">
               <img
                 src={story.images[0]}
                 alt={story.title}
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
+            </div> */}
+              <div className="w-full h-56 overflow-hidden">
+              <ImageSlider images={story.images} className="h-full" />
             </div>
 
             <div className="p-5 flex flex-col gap-3">

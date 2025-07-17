@@ -86,7 +86,7 @@ const AddPackage = () => {
 
   return (
     <div className="max-w-4xl mx-auto  pt-8">
-      <h2 className="text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] lg:text-center">Add New Tour Package</h2>
+      <h2 className="text-2xl lg:text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] lg:text-center">Add New Tour Package</h2>
     <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-8 shadow rounded-2xl shadow-gray-300">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Title */}

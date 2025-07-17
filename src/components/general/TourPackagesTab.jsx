@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
 import Loading from "../sharedComponents/Loading";
+// import ImageSlider from "../sharedComponents/ImageSlider";
 
 // const fetchPackages = async () => {
 //   const res = await axiosSecure.get("/packages");
@@ -42,15 +43,18 @@ const TourPackagesTab = () => {
           <img
             src={pkg?.images[0]}
             alt={pkg.title}
-            className="h-60 w-full object-cover"
+            className="h-72 w-full object-cover"
           />
-          <div className="p-4 space-y-2">
+{/*                 <div className="w-full h-86 overflow-hidden">
+  <ImageSlider images={pkg.images} className="h-full" />
+</div> */}
+          <div className="p-6 py-8 space-y-2">
             <h3 className="line-clamp-1 text-xl font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
               {pkg.title}
             </h3>
             <p className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">Type: {pkg.type}</p>
             <p className="font-bold">
-              ${pkg.price}
+              {pkg.price} {pkg.currency}.
             </p>
             <Link
               to={`/packages/${pkg._id}`}

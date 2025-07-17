@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router';
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import { FaStar, FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaCheck, FaTimes } from "react-icons/fa";
 import PackageBooking from '../../components/forms/PackageBooking';
+import Loading from '../../components/sharedComponents/Loading';
 
 
 
@@ -53,7 +54,7 @@ const PackageDetails = () => {
     groupSize,
   } = packageData;
 
-      if (isLoading) return <div>Loading tour guides...</div>;
+      if (isLoading) return <Loading />;
   if (isError) return <div>Error loading guides</div>;
 
 

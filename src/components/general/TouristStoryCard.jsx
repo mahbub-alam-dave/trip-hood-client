@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { FaShareAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { ContextValues } from "../../utility/contexts/ContextValue";
+import ImageSlider from "../sharedComponents/ImageSlider";
 
 const TouristStoryCard = ({ story }) => {
   const { user } = useContext(ContextValues);
@@ -16,11 +17,14 @@ const TouristStoryCard = ({ story }) => {
 
   return (
     <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-xl overflow-hidden shadow-lg flex flex-col transition hover:scale-105">
-      <img
+      {/* <img
         src={story.images[0]}
         alt={story.title}
         className="h-48 w-full object-cover"
-      />
+      /> */}
+      <div className="w-full h-48 overflow-hidden">
+  <ImageSlider images={story.images} className="h-full" />
+</div>
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-lg font-semibold mb-1 line-clamp-2">
           {story.title}

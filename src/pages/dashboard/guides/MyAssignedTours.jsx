@@ -60,8 +60,8 @@ const MyAssignedTours = () => {
   }
 
   return (
-    <div className="py-8">
-      <h2 className="text-2xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Assigned Tours</h2>
+    <div className="">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Assigned Tours</h2>
 
       <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
         <table className="w-full table-auto border-collapse">
@@ -78,14 +78,14 @@ const MyAssignedTours = () => {
 
           <tbody>
             {assignedTours.map((booking) => (
-              <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+              <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] text-center">
                 <td className="px-4 py-3 font-medium">{booking.destination}</td>
                 <td className="px-4 py-3">{booking.touristName}</td>
                 <td className="px-4 py-3">{new Date(booking.tourDate).toLocaleDateString()}</td>
                 <td className="px-4 py-3">{booking.price} BDT.</td>
                 <td className="px-4 py-3">
                   <span
-                    className={`px-2 py-1 rounded text-xs ${
+                    className={`px-2 py-1 rounded text-xs  ${
                       booking.status === "Accepted"
                         ? "bg-green-500 text-[var(--color-text-primary-two)]"
                         : booking.status === "Rejected"
@@ -98,7 +98,7 @@ const MyAssignedTours = () => {
                     {booking.status}
                   </span>
                 </td>
-                <td className="px-4 py-3 flex flex-wrap text-center gap-2">
+                <td className="px-4 py-3 flex flex-wrap items-center justify-center text-center gap-2">
                   <button
                     disabled={booking.status !== "in_review"}
                     onClick={() => handleAccept(booking._id)}

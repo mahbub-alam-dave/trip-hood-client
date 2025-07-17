@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import useAxiosSecure from "../../../utility/hooks/useAxiosSecure";
 import NoData from "../../../components/sharedComponents/NoData";
+import ImageSlider from "../../../components/sharedComponents/ImageSlider";
 
 const ManageStories = () => {
   const { user } = useContext(ContextValues);
@@ -56,8 +57,8 @@ const ManageStories = () => {
     }
 
   return (
-    <div className="py-8">
-      <h2 className="text-3xl font-bold  mb-6">
+    <div className="">
+      <h2 className="text-2xl lg:text-3xl font-bold  mb-6">
         My Stories
       </h2>
 
@@ -67,11 +68,14 @@ const ManageStories = () => {
               key={story._id}
               className="rounded-lg overflow-hidden bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition shadow dark:shadow-gray-300"
             >
-              <img
+{/*               <img
                 src={story.images[0]}
                 alt={story.title}
-                className="w-full h-48 object-cover"
-              />
+                className="w-full h-64 object-cover"
+              /> */}
+                    <div className="w-full h-64 overflow-hidden">
+  <ImageSlider images={story.images} className="h-full" />
+</div>
               <div className="p-4 space-y-2">
                 <h3 className="text-xl font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
                   {story.title}

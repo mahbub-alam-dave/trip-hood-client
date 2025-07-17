@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -190,12 +190,22 @@ const UpdateStory = () => {
           </div>
         </div>
 
+        <div className="flex items-center gap-3">
+          <Link to={-1}>
+                  <button
+          type="submit"
+          className="px-4 py-2 bg-[var(--color-accent)] text-[var(--color-text-primary-two)] rounded-lg dark:bg-[var(--color-accent-dark)] cursor-pointer"
+        >
+          Go Back
+        </button>
+          </Link>
         <button
           type="submit"
           className="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-text-primary-two)] rounded-lg dark:bg-[var(--color-primary-dark)] cursor-pointer"
         >
           Update Story
         </button>
+        </div>
       </form>
     </div>
     </div>

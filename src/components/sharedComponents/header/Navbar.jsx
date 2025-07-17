@@ -50,7 +50,7 @@ const theme = useThemeMode()
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-3 w-56 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg shadow-lg p-4 space-y-3">
+                <div className="absolute right-0 mt-10 w-56 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg shadow-lg p-4 space-y-3">
                   <div className="text-center">
                     <p className="font-semibold text-lg">{user.displayName}</p>
                     <p className="text-xs text-gray-500">{user.email}</p>

@@ -36,7 +36,7 @@ const BecomeGuide = () => {
 
   return (
     <div className=" max-w-3xl mx-auto pt-10">
-      <h1 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 text-center">
+      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 text-center">
         Become a Tour Guide
       </h1>
 

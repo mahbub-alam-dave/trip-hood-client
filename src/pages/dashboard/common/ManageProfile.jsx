@@ -219,7 +219,7 @@ const handleImageChange = async (e) => {
         userData.role === "admin" &&
         <AdminStats />
       }
-        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
+        <h3 className="text-2xl mt-12 font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
           Profile Details
         </h3>
 

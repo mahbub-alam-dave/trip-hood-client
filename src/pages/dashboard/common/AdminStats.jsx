@@ -73,7 +73,7 @@ const AdminStats = () => {
 
   return (
     <div className="space-y-6 my-8">
-              <h3 className="text-lg font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
+              <h3 className="text-2xl  mb-6 mt-12 font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] ">
           Stats and Overviews
         </h3>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -92,7 +92,7 @@ const AdminStats = () => {
     </div>
 
     {/* Chart */}
-        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
+        <h3 className="text-2xl mt-12 font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
           Visual Overview
         </h3>
       <div className="p-5 rounded-xl shadow-md bg-white dark:bg-[var(--color-bg-primary-dark)] dark:border dark:border-[var(--color-border-dark)]">
