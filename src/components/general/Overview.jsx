@@ -1,14 +1,18 @@
 const Overview = () => {
     const images = [
-    "https://i.ibb.co/gM5nqn22/img-1.jpg",
+    "https://i.ibb.co/Z6PLh7LK/img-4.webp",
+"https://i.ibb.co/JwySJRJj/img-3.webp",
+"https://i.ibb.co/qwkfGmw/img-2.webp",
+"https://i.ibb.co/zT47kt2J/img-1.webp"
+/*     "https://i.ibb.co/gM5nqn22/img-1.jpg",
     "https://i.ibb.co/XmKXWqQ/img-2.jpg",
     "https://i.ibb.co/1JXDyKRG/img-3.jpg",
-    "https://i.ibb.co/VcxtGD8z/img-4.jpg",
+    "https://i.ibb.co/VcxtGD8z/img-4.jpg", */
   ];
   return (
     <section className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Title */}
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-16 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Why Choose Trip Hood?
       </h2>
 
@@ -17,7 +21,7 @@ const Overview = () => {
         <div className="space-y-8 ">
           {/* About Purpose */}
           <div>
-            <h3 className="text-2xl font-semibold mb-2">Who We Are</h3>
+            <h3 className="text-xl font-semibold mb-2">Who We Are</h3>
             <p className=" leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
               Trip Hood is your personal travel companion — dedicated to connecting travelers with unforgettable experiences. Whether you're a solo explorer or group adventurer, we help you discover the hidden gems of the world.
             </p>
@@ -25,7 +29,7 @@ const Overview = () => {
 
           {/* What We Offer */}
           <div>
-            <h3 className="text-2xl font-semibold mb-2 ">What We Offer</h3>
+            <h3 className="text-xl font-semibold mb-2 ">What We Offer</h3>
             <p className="leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
               From curated tour packages and personalized itineraries to community travel forums and travel resources — we offer everything you need to plan and enjoy your next adventure.
             </p>
@@ -33,7 +37,7 @@ const Overview = () => {
 
           {/* Our Services */}
           <div>
-            <h3 className="text-2xl font-semibold mb-2">Our Services</h3>
+            <h3 className="text-xl font-semibold mb-2">Our Services</h3>
             <ul className="list-disc pl-5 text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] space-y-2">
               <li>Hand-picked tour packages for every budget</li>
               <li>24/7 travel assistance and support</li>

@@ -1,22 +1,18 @@
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import GoogleSignIn from "../../components/sharedComponents/GoogleSignIn";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
-import LoginSuccessRedirector from "../../utility/hooks/LoginSuccessRedirector";
-// import { useRoleBasedRedirect } from "../../utility/hooks/useRoleBasedRedirect";
-// import useUserRole from "../../utility/hooks/useUserRole";
+
 
 const Login = () => {
   const { loginUser } = useContext(ContextValues);
   const simpleAxios = useSimpleAxios()
+  const navigate = useNavigate()
 
-  // const location = useLocation()
-  // const {role} = useUserRole()
-  // const redirectAfterLogin = useRoleBasedRedirect(role);
 
   const {
     register,
@@ -51,8 +47,7 @@ const Login = () => {
           showConfirmButton: false,
         });
         reset();
-        // navigate(location.state || '/');
-        // redirectAfterLogin()
+        navigate("/redirect")
       })
       .catch((error) =>
         Swal.fire({
@@ -112,7 +107,7 @@ const Login = () => {
         {/* Login Button */}
         <button
           type="submit"
-          className="w-full py-3 rounded-lg bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] font-semibold hover:opacity-90 transition"
+          className="w-full py-3 rounded-lg bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] font-semibold hover:opacity-90 transition cursor-pointer"
         >
           Login
         </button>
@@ -137,7 +132,6 @@ const Login = () => {
           Register here
         </Link>
       </p>
-      <LoginSuccessRedirector />
     </div>
   );
 };

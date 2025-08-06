@@ -1,14 +1,19 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
+import Congratulations from "../general/Congratulations";
+// import { useWindowSize } from "react-use";
+// import Confetti from "react-confetti";
 
-const BookingSuccessModal = ({ isOpen, bookingId }) => {
-
+const BookingSuccessModal = ({ isOpen, bookingId, showCongrats, setShowCongrats }) => {
+// const {width, height} = useWindowSize();
 
   const navigate = useNavigate()
 
   if (!isOpen) return null;
 
   return (
+    <> 
+    {/* <Confetti width={width} height={height} /> */}
     <div className="fixed inset-0 bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)] bg-opacity-60 flex justify-center items-center z-50">
       <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-2xl p-8 w-[90%] max-w-md text-center shadow-xl relative">
         
@@ -34,7 +39,13 @@ const BookingSuccessModal = ({ isOpen, bookingId }) => {
           </Link>
         </div>
       </div>
+      {showCongrats && (
+      <div className="inset-0">
+        <Congratulations onClose={() => setShowCongrats(false)} />
+      </div>
+      )}
     </div>
+    </>
   );
 };
 

@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { ContextValues } from "../../utility/contexts/ContextValue";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useSimpleAxios from "../../utility/hooks/useSimpleAxios";
 import avatar from '../../assets/avatar.png'
-import LoginSuccessRedirector from "../../utility/hooks/LoginSuccessRedirector";
 
 const GoogleSignIn = () => {
   const navigate = useNavigate();
   const simpleAxios = useSimpleAxios()
   const { googleSignIn } = useContext(ContextValues);
 
-  const location = useLocation()
+  // const location = useLocation()
 
   const handleGoogleSignIn = () => {
     googleSignIn()
@@ -37,7 +36,8 @@ const GoogleSignIn = () => {
           timer: 2000,
           showConfirmButton: false,
         });
-        navigate(location.state || "/");
+        // navigate(location.state || "/");
+        navigate('/redirect')
       })
       .catch((error) =>
         Swal.fire({
@@ -51,12 +51,11 @@ const GoogleSignIn = () => {
     <div>
       <button
         onClick={handleGoogleSignIn}
-        className="w-full flex items-center justify-center gap-3 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)]  hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+        className="w-full flex items-center justify-center gap-3 py-3 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)]  hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer"
       >
         <FaGoogle />
         Sign in with Google
       </button>
-      <LoginSuccessRedirector />
     </div>
   );
 };

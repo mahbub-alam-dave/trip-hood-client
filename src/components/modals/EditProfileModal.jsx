@@ -12,10 +12,10 @@ const EditProfileModal = ({ isOpen, setIsOpen, userData, image, avatar, register
           enterFrom="opacity-0" enterTo="opacity-100"
           leaveFrom="opacity-100" leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-white/95 dark:bg-black/95" />
+          <div className="fixed inset-0 bg-white dark:bg-black " />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto p-5">
+        <div className="fixed inset-0 overflow-y-auto p-5 mt-20">
           <div className="flex min-h-full items-start justify-center">
             <Transition.Child
               as={Fragment}

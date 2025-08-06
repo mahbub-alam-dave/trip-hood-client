@@ -118,9 +118,9 @@ const handleCancelBooking = (id) => {
           </tbody>
         </table>
       </div>
-      {showCongrats && (
+{/*       {showCongrats && (
         <Congratulations onClose={() => setShowCongrats(false)} />
-      )}
+      )} */}
     </div>
   );
 };

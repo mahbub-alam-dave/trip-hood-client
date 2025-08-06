@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaBars, FaTimes, FaUserCircle, FaThLarge, FaSignOutAlt } from "react-icons/fa";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
@@ -10,8 +10,30 @@ import useThemeMode from "../../../utility/hooks/useThemeMode";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, signOutUser } = useContext(ContextValues);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownRef = useRef();
+  const avatarRef = useRef();
+
+    useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        avatarRef.current &&
+        !avatarRef.current.contains(event.target)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleItemClick = () => {
+    setDropdownOpen(false); // Close dropdown when item is clicked
+  };
 
   const handleLogout = () => {
     signOutUser()
@@ -45,13 +67,14 @@ const theme = useThemeMode()
           {/* Auth Buttons */}
           {user ? (
             <div className="relative flex justify-center">
-              <button onClick={() => setDropdownOpen(!dropdownOpen)}>
-                <img src={user.photoURL || avatar} alt="User" className="w-10 h-10 rounded-full  object-cover" />
+              <button ref={avatarRef} onClick={() => setDropdownOpen(!dropdownOpen)}>
+                <img src={user.photoURL || avatar} alt="User" className="w-10 h-10 rounded-full  object-cover cursor-pointer" />
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-10 w-56 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg shadow-lg p-4 space-y-3">
-                  <div className="text-center">
+                <div className="absolute right-0 mt-10 w-52 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg shadow-lg p-6 ">
+                  <div ref={dropdownRef} className=" space-y-6">
+                  <div className="">
                     <p className="font-semibold text-lg">{user.displayName}</p>
                     <p className="text-xs text-gray-500">{user.email}</p>
                   </div>
@@ -59,9 +82,13 @@ const theme = useThemeMode()
                   <NavLink to="/dashboard" className="flex items-center gap-2 text-sm hover:text-[var(--color-primary)]">
                     <FaThLarge /> Dashboard
                   </NavLink>
-                  <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-red-600 hover:text-red-800 w-full">
+                  <button onClick={() => {
+                handleLogout();
+                handleItemClick(); // Close on logout click
+              }} className="flex items-center gap-2 text-sm text-red-600 hover:text-red-800 w-full">
                     <FaSignOutAlt /> Logout
                   </button>
+                  </div>
                 </div>
               )}
             </div>
