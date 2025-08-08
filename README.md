@@ -25,9 +25,7 @@ password: Aaaaa@
 
 # 🖼 Trip Hood - home
 
-```markdown
 ![Trip Hood - Home](./public/home-page-ui.png)
-```
 
 ---
 
