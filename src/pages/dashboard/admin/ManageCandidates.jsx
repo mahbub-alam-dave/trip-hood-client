@@ -93,10 +93,10 @@ const ManageCandidates = () => {
   return (
     <div className="">
       <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Guide Applications</h2>
-    <div className=" bg-[var9--color-bg-primary] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow">
-      <div className="overflow-x-auto rounded-lg">
-        <table className="min-w-full table-auto rounded-lg">
-          <thead className="bg-gray-100 dark:bg-gray-800 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] ">
+    <div className=" ">
+      <div className="overflow-x-auto bg-[var--color-bg-primary] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg ">
+        <table className="min-w-full table-auto rounded-lg ">
+          <thead className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)]">
             <tr className="">
               <th className="py-2 px-4 "></th>
               <th className="py-2 px-4  ">Name</th>
@@ -106,7 +106,7 @@ const ManageCandidates = () => {
           </thead>
           <tbody className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
             {applications.map((app, index) => (
-              <tr key={app._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+              <tr key={app._id} className="border-t hover:bg-gray-100 dark:hover:bg-gray-800 border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
                 <td className="py-2 px-4 text-center">{index + 1}</td>
                 <td className="py-2 px-4 text-center">{app.name}</td>
                 <td className="py-2 px-4 text-center">{app.email}</td>

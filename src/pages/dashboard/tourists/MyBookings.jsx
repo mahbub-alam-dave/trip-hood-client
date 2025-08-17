@@ -73,7 +73,7 @@ const handleCancelBooking = (id) => {
     <div className="">
       <h2 className="text-2xl lg:text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Bookings</h2>
 
-      <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+      <div className="overflow-x-auto bg-[var--color-bg-primary] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg">
         <table className="min-w-full table-auto text-left">
           <thead className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)]">
             <tr>
@@ -88,7 +88,7 @@ const handleCancelBooking = (id) => {
           <tbody className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
 
             {bookings.map((booking) => (
-              <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:bg-gray-100 dark:hover:bg-gray-900 transition">
+              <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                 <td className="px-4 py-3">{booking.packageName}</td>
                 <td className="px-4 py-3">{booking.price} BDT</td>
                 <td className="px-4 py-3">{new Date(booking.tourDate).toLocaleString()}</td>

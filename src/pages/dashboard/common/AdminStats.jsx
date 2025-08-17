@@ -81,7 +81,7 @@ const AdminStats = () => {
       {stats.map((item, idx) => (
         <div
           key={idx}
-          className={`p-6 py-12 rounded-xl shadow-md ${item.bg} dark:bg-[var(--color-bg-primary-dark)] flex items-center gap-4 dark:border dark:border-[var(--color-border-dark)]`}
+          className={`p-6 py-12 rounded-xl shadow-sm ${item.bg} dark:bg-[var(--color-bg-primary-dark)] flex items-center gap-4 dark:border dark:border-[var(--color-border-dark)]`}
         >
           <div className="p-3 rounded-full bg-[var(--color-bg-primary)] dark:bg-gray-800 shadow">{item.icon}</div>
           <div>
@@ -96,7 +96,7 @@ const AdminStats = () => {
         <h3 className="text-2xl mt-12 font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
           Visual Overview
         </h3>
-      <div className="p-5 rounded-xl shadow-md bg-white dark:bg-[var(--color-bg-primary-dark)] dark:border dark:border-[var(--color-border-dark)]">
+      <div className="p-5 rounded-xl shadow-sm bg-white dark:bg-[var(--color-bg-primary-dark)] dark:border dark:border-[var(--color-border-dark)]">
         <ResponsiveContainer width="100%" height={450}>
           <BarChart data={chartData}>
             <XAxis dataKey="label" stroke="#8884d8" />

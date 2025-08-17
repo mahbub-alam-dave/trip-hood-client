@@ -60,7 +60,7 @@ const { data: userData = {}, isLoading, } = useQuery({
   if(isLoading) return <Loading />
 
   return (
-    <div className="mt-4">
+    <div className="">
 
 <motion.section
       initial={{ opacity: 0, y: -20 }}
@@ -109,7 +109,7 @@ const { data: userData = {}, isLoading, } = useQuery({
             key={index}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-2xl shadow-md hover:shadow-lg transition"
+            className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-2xl shadow-sm transition dark:border dark:border-[var(--color-border-dark)]"
           >
             <Link to={card.path} className="flex flex-col items-center text-center space-y-3">
               <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-full">

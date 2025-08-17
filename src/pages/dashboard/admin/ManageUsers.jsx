@@ -130,7 +130,7 @@ const customStyles = {
         {
           isLoading ? <Loading />
           :
-        <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+        <div className="overflow-x-auto bg-[var--color-bg-primary] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg">
         <table className="min-w-full table-auto text-left ">
           {/* bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] */}
           <thead className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)] ">
@@ -148,7 +148,7 @@ const customStyles = {
               </tr>
             ) : (
               users.map((user) => (
-                <tr key={user._id} className="border-t hover:bg-gray-100 dark:hover:bg-gray-900  border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+                <tr key={user._id} className="border-t hover:bg-gray-100 dark:hover:bg-gray-800  border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
                   <td className="px-4 py-3">{user.name}</td>
                   <td className="px-4 py-3">{user.email}</td>
                   <td className="px-4 py-3 capitalize">{user.role}</td>

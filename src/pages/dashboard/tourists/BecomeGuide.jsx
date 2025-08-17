@@ -38,12 +38,12 @@ const BecomeGuide = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-    <div className=" pt-8">
+    <div className="">
       <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 ">
         Become a Tour Guide
       </h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] shadow-sm dark:shadow-gray-500">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
 
         {/* Application Title */}
         <div>

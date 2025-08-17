@@ -64,7 +64,7 @@ const MyAssignedTours = () => {
     <div className="">
       <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">My Assigned Tours</h2>
 
-      <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+      <div className="overflow-x-auto bg-[var--color-bg-primary] dark:bg-[var(--color-bg-primary-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-lg">
         <table className="w-full table-auto border-collapse">
           <thead className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)]">
             <tr>
@@ -79,7 +79,7 @@ const MyAssignedTours = () => {
 
           <tbody className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
             {assignedTours.map((booking) => (
-              <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] text-center">
+              <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:bg-gray-100 dark:hover:bg-gray-800 text-center">
                 <td className="px-4 py-3 font-medium">{booking.destination}</td>
                 <td className="px-4 py-3">{booking.touristName}</td>
                 <td className="px-4 py-3">{new Date(booking.tourDate).toLocaleDateString()}</td>

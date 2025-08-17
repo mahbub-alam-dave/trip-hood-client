@@ -164,7 +164,7 @@ const handleImageChange = async (e) => {
   if(isLoading) return <Loading />
 
   return (
-    <div className="mt-4">
+    <div className="">
 
        <div className=" bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-2xl py-8 px-6 space-y-2 mb-6 dark:border dark:border-[var(--color-border-dark)] shadow-md">
         <h1 className="text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
@@ -252,7 +252,7 @@ const handleImageChange = async (e) => {
             key={index}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-2xl shadow-md hover:shadow-lg transition"
+            className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-2xl shadow-sm transition dark:border dark:border-[var(--color-border-dark)]"
           >
             <Link to={card.path} className="flex flex-col items-center text-center space-y-3">
               <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-full">

@@ -89,15 +89,15 @@ export default function AddStoryPage() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-    <div className="pt-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2">
+    <div className="">
       <h2 className="text-2xl lg:text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Share Your Travel Story
       </h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-5 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] p-6 py-8 rounded-lg shadow "
+        className="space-y-5 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] p-6 py-8 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
       >
         {/* Title */}
         <div>

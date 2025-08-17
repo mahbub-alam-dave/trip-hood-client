@@ -67,7 +67,7 @@ const ManageStories = () => {
           {stories.map((story) => (
             <div
               key={story._id}
-              className="rounded-lg overflow-hidden bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition shadow "
+              className="rounded-lg overflow-hidden bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition  border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
             >
 {/*               <img
                 src={story.images[0]}
