@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Banner from '../../components/general/Banner';
 import Overview from '../../components/general/Overview';
 import TabsSection from '../../components/general/TabSection';
@@ -8,8 +8,13 @@ import ReviewSection from '../../components/general/ReviewSection';
 import DestinationsMap from '../../components/general/DestinationsMap';
 import AppAndNewsletterCTA from '../../components/general/AppAndNewsletterCTA';
 import PartnersShowcase from '../../components/general/PartnersShowcase';
+import { ContextValues } from '../../utility/contexts/ContextValue';
+import Loading from '../../components/sharedComponents/Loading';
 
 const Home = () => {
+    const {loading} = useContext(ContextValues)
+
+    if(loading) return <Loading />
     return (
         <div>
             <Banner />

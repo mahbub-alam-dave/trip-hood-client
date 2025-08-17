@@ -4,6 +4,7 @@ import { Link } from "react-router";
 // import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../utility/hooks/useAxiosSecure";
+import Loading from "../sharedComponents/Loading"
 
 const TouristStoryComponent = () => {
 //   const [stories, setStories] = useState([]);
@@ -27,15 +28,19 @@ const TouristStoryComponent = () => {
   })
 
 
-if (isLoading) return <div>Loading tour guides...</div>;
-  if (isError) return <div>Error loading guides</div>;
+if (isLoading) return <Loading />;
+  // if (isError) return <div>Error loading guides</div>;
 // #121212; #101828
   return (
     <div className='bg-gray-100 dark:bg-[#141414] py-20 my-16'>
     <section className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+      <div className="mb-12 space-y-4">
+      <h2 className="text-2xl md:text-3xl font-bold text-center">
         Traveler Stories
       </h2>
+      <p className='text-center md:text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]'>Stories that has been shared most recently by the advententures. We are waiting that your story also be featured here</p>
+      </div>
+
       {/* Shared by Adventurers */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

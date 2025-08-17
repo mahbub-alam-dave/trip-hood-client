@@ -12,41 +12,21 @@ const Overview = () => {
   return (
     <section className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Title */}
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <div className="space-y-4 mb-12">
+      <h2 className="text-2xl md:text-3xl font-bold text-center  text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Why Choose Trip Hood?
       </h2>
+       <p className='text-center md:text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]'>A small glimpse about TripHood. We believe that we provide the best travel journey you have ever experienced</p>
+       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 items-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <div className="grid md:grid-cols-2 gap-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         {/* Left Content */}
-        <div className="space-y-8 ">
-          {/* About Purpose */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Who We Are</h3>
-            <p className=" leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
-              Trip Hood is your personal travel companion — dedicated to connecting travelers with unforgettable experiences. Whether you're a solo explorer or group adventurer, we help you discover the hidden gems of the world.
-            </p>
-          </div>
-
-          {/* What We Offer */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 ">What We Offer</h3>
-            <p className="leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
-              From curated tour packages and personalized itineraries to community travel forums and travel resources — we offer everything you need to plan and enjoy your next adventure.
-            </p>
-          </div>
-
-          {/* Our Services */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Our Services</h3>
-            <ul className="list-disc pl-5 text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] space-y-2">
-              <li>Hand-picked tour packages for every budget</li>
-              <li>24/7 travel assistance and support</li>
-              <li>Local guide recommendations & reviews</li>
-              <li>Online community to connect with fellow travelers</li>
-              <li>Secure booking & flexible cancellations</li>
-            </ul>
-          </div>
-        </div>
+        <div className="space-y-4 md:mt-10">
+  <h3 className="text-xl md:text-2xl font-semibold">About Trip Hood</h3>
+  <p className="leading-relaxed text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
+    Trip Hood is your personal travel companion, dedicated to connecting travelers with unforgettable experiences. Whether you're a solo explorer or an adventurer in a group, we help you uncover the hidden gems of the world. We offer curated tour packages, personalized itineraries, community travel forums, and essential travel resources to make planning effortless and exciting. Our services include hand-picked packages for every budget, 24/7 travel assistance, local guide recommendations with authentic reviews, a vibrant online community to connect with fellow travelers, and secure booking with flexible cancellations — ensuring your journey is smooth, memorable, and truly yours.
+  </p>
+</div>
 
         {/* Right Side Image or Illustration */}
         {/* <div className="grid grid-cols-2 gap-4">
@@ -72,7 +52,7 @@ const Overview = () => {
           />
         </div> */}
             {/* Right Image Collage */}
-        <div className="grid grid-cols-2 gap-4">
+{/*         <div className="grid grid-cols-2 gap-4">
           {images.map((img, index) => (
             <div
               key={index}
@@ -85,7 +65,16 @@ const Overview = () => {
               />
             </div>
           ))}
-        </div>
+        </div> */}
+              <iframe
+        src="https://www.youtube.com/embed/SzYJ-EgWmvQ"
+        title="Trip Video"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        // style={{ width: "100%", height: "100%" }}
+        className="rounded-xl h-[450px] w-full"
+      ></iframe>
       </div>
     </section>
   );

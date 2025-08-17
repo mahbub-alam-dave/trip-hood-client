@@ -13,7 +13,10 @@ const ReviewSection = () => {
     return (
   <div className='bg-gray-100 dark:bg-[#141414] py-10'>
 <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-  <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-12">What Travelers Are Saying</h2>
+  <div className="space-y-4 mb-12">
+  <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">What Travelers Are Saying</h2>
+    <p className='text-center md:text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]'>Here are some of our satisfied travellers experience among thousands and this is the things we valued to achieve</p>
+    </div>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {testimonials.map(review => (
       <div key={review._id} className="text-center flex flex-col items-center text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">

@@ -7,7 +7,7 @@ const Root = () => {
     return (
         <div className='bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)]'>
             <Navbar />
-            <div className='min-h-[60vh]'>
+            <div className='min-h-[60vh] mt-[90px]'>
             <Outlet />
             </div>
             <Footer location="root"/>

@@ -21,9 +21,12 @@ const spots = [
 const DestinationsMap = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+      <div className="space-y-4 mb-12">
+      <h2 className="text-2xl md:text-3xl font-bold text-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Explore Destinations on Map
       </h2>
+          <p className='text-center md:text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]'>Find our tourist location all around the Bangladesh. We are committed to provide the safe, comfortable and enjoyable tour journey</p>
+      </div>
 
       <MapContainer 
         center={[23.6850, 90.3563]} 

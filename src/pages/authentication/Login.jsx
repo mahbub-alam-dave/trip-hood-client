@@ -60,8 +60,9 @@ const Login = () => {
 
 
   return (
-    <div className="max-w-md mx-auto my-16 p-8 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-6 ">
+    <div className="py-24">
+    <div className="max-w-md mx-auto p-8 bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold text-center mb-6">
         Welcome Back!
       </h2>
 
@@ -132,6 +133,7 @@ const Login = () => {
           Register here
         </Link>
       </p>
+    </div>
     </div>
   );
 };

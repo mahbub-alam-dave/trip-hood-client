@@ -49,8 +49,8 @@ const Navbar = () => {
 const theme = useThemeMode()
 
   return (
-    <header className="w-full bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] shadow-sm border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center h-24 px-4 sm:px-6 lg:px-8">
+    <header className="w-full h-[90px] bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] shadow-sm border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] fixed top-0 z-50 ">
+      <div className="max-w-7xl h-full mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
         {/* Logo & Name */}
         <Link to="/" className="flex items-center gap-3 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] font-bold text-2xl">
           <img src={theme === "dark" ? logoDark : logoLight } alt="logo" className="w-8 h-8" />

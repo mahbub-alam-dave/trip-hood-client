@@ -29,7 +29,6 @@ const TourGuidesTab = () => {
 
 
     if (isLoading) return <Loading />;
-  if (isError) return <div>Error loading guides</div>;
 
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

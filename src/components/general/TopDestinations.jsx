@@ -8,7 +8,10 @@ const destinations = [
 const TopDestinations = () => {
     return (
 <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
-  <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Top Tourist Destinations</h2>
+  <div className="mb-12 space-y-4">
+  <h2 className="text-2xl md:text-3xl font-bold text-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Top Tourist Destinations</h2>
+  <p className='text-center md:text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]'>Top tourist destinations that most of our travellers preferred to visit </p>
+  </div>
   <div className="flex overflow-x-auto gap-4">
   {destinations.map(dest => (
     <div key={dest._id} className="min-w-[300px] w-full rounded-xl overflow-hidden relative">

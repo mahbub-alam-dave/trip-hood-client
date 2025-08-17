@@ -29,10 +29,12 @@ const CommunityPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-12 text-center">
+      <div className="space-y-4 mb-12">
+      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] text-center">
         📖 Traveler Stories from Our Community
       </h1>
-
+            <p className='text-center md:text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]'>Explore the travel stories and experience recently shared by our users and make up your mind to share your's one</p>
+</div>
       <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {stories.map((story) => (
           <div

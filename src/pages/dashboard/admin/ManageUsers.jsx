@@ -115,7 +115,7 @@ const customStyles = {
         Manage Users
       </h2>
 
-      <div className="flex flex-col items-center md:flex-row gap-4 mb-6">
+      <div className="flex flex-col items-center md:flex-row gap-4 mb-6 ">
         <input
           type="text"
           placeholder="Search by name or email..."
@@ -134,7 +134,7 @@ const customStyles = {
         
       </div>
 
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto min-h-[60vh]">
         <table className="min-w-full bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded shadow">
           <thead>
             <tr className="text-left border-b  border-[var(--color-border)] dark:border-[var(--color-border-dark)]  bg-gray-100 dark:bg-gray-800">
