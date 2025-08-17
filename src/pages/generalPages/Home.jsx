@@ -10,6 +10,7 @@ import AppAndNewsletterCTA from '../../components/general/AppAndNewsletterCTA';
 import PartnersShowcase from '../../components/general/PartnersShowcase';
 import { ContextValues } from '../../utility/contexts/ContextValue';
 import Loading from '../../components/sharedComponents/Loading';
+import FeaturesSection from '../../components/general/FeaturesSection';
 
 const Home = () => {
     const {loading} = useContext(ContextValues)
@@ -19,6 +20,7 @@ const Home = () => {
         <div>
             <Banner />
             <Overview />
+            <FeaturesSection />
             {/* tourism and travel guide section */}
             <TabsSection />
             {/* tourist story section */}

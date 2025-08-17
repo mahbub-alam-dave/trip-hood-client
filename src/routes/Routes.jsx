@@ -29,6 +29,11 @@ import ManageCandidates from "../pages/dashboard/admin/ManageCandidates";
 import MyAssignedTours from "../pages/dashboard/guides/MyAssignedTours";
 import ErrorPage from "../components/general/ErrorPage";
 import RedirectPage from "../utility/hooks/RedirectPage";
+import AdminOverview from "../pages/dashboard/admin/AdminOverview";
+import DashboardIndex from "./DashboardIndex";
+
+
+
 
 export const router = createBrowserRouter([
     {
@@ -79,7 +84,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true, // 👈 this is equivalent to path: ''
-      element: <Navigate to="/dashboard/profile" replace />
+      element: <DashboardIndex />
             },
             {
                 path: 'profile',
@@ -112,6 +117,10 @@ export const router = createBrowserRouter([
             {
                 path: "my-assigned-tours",
                 element: <GuidesRoutes> <MyAssignedTours /> </GuidesRoutes>
+            },
+            {
+                path: 'admin-overview',
+                element: <AdminRoutes> <AdminOverview /> </AdminRoutes>
             },
             {
                 path: 'add-tour-package',

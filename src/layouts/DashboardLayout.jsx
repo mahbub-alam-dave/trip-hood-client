@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Outlet, NavLink, Link } from "react-router";
 import { FaBars, FaTimes, FaUserCircle, FaBookmark, FaBookOpen, FaPlusCircle, FaMapMarkedAlt, FaUserEdit, FaSignOutAlt, FaRegAddressCard } from "react-icons/fa";
 import { RiSuitcaseLine, RiUserSettingsLine, RiUserSearchLine } from "react-icons/ri";
+import { IoMdStats } from "react-icons/io";
 // import your logos and nav links here
 import logoDark from "../assets/logoDark.png";
 import logoLight from "../assets/logoLight.png";
@@ -36,6 +37,11 @@ const DashboardLayout = () => {
   ];
 
   const AdminLinks =[
+    {
+      to: "/dashboard/admin-overview",
+      label: "Overview",
+      icon: <IoMdStats />
+    },
     {
     to: "/dashboard/add-tour-package",
     label: "Add A Package",

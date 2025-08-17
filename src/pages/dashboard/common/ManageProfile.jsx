@@ -14,8 +14,31 @@ import AdminStats from "./AdminStats";
 import SimpleModal from "../../../components/modals/SimpleModal";
 import EditProfileModal from "../../../components/modals/EditProfileModal";
 import Loading from "../../../components/sharedComponents/Loading";
+import { Home, Package, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 Modal.setAppElement("#root");
+
+  const cards = [
+    {
+      title: "Home",
+      description: "Go back to the main dashboard",
+      icon: <Home className="w-8 h-8 text-blue-500" />,
+      path: "/",
+    },
+    {
+      title: "Packages",
+      description: "Explore curated travel packages",
+      icon: <Package className="w-8 h-8 text-green-500" />,
+      path: "/trips",
+    },
+    {
+      title: "Community",
+      description: "Connect with fellow travelers",
+      icon: <Users className="w-8 h-8 text-purple-500" />,
+      path: "/community",
+    },
+  ];
 
 const ManageProfile = () => {
 
@@ -74,65 +97,6 @@ const { data: userData = {}, isLoading, } = useQuery({
     setModalIsOpen(true);
     setImage(userData.photo)
   };
-
-  // Update Mutation
-/*   const updateProfileMutation = useMutation({
-    mutationFn: async (updatedData) => {
-      const res = await axiosSecure.patch(`${import.meta.env.VITE_app_url}/profile/update`, updatedData);
-      console.log(res.data)
-      return res.data;
-    },
-    onSuccess: () => {
-      Swal.fire("Success!", "Profile updated successfully.", "success");
-      queryClient.invalidateQueries();
-      setModalIsOpen(false);
-    },
-  });
-
-  const [image, setImage] = useState(userData.photo);
-
-  const onSubmit = (data) => {
-
-    if(image && data.name) {
-      updateUser({displayName: data.name, photoURL: image})
-      .then(() => {
-      })
-      .catch(error => {
-        console.log(error.message)
-      })
-    }
-
-    if (userData?.role === "tour_guide") {
-      data.coverageArea = data.coverageArea.split(",").map((item) => item.trim());
-      data.expertise = data.expertise.split(",").map((item) => item.trim());
-    }
-    const updatedData = {...data, photo: image}
-    updateProfileMutation.mutate(updatedData);
-  };
-
-
-  const handleImageChange = async (e) => {
-  const image = e.target.files[0];
-  if (!image) return;
-
-  const formData = new FormData();
-  formData.append("image", image);
-
-  try {
-    const res = await axios.post(
-      `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgbb_url}`,
-      formData
-    );
-    setImage(res.data.data.display_url);
-  } catch (error) {
-    console.error("Image upload failed", error);
-    Swal.fire({
-      icon: "error",
-      title: "Image upload failed",
-      text: error.message,
-    });
-  }
-}; */
 
 const updateProfileMutation = useMutation({
   mutationFn: async (updatedData) => {
@@ -212,19 +176,11 @@ const handleImageChange = async (e) => {
       </div>
 
 
-      {/* <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Manage Profile</h2>
-      </div> */}
-
-      {
-        userData.role === "admin" &&
-        <AdminStats />
-      }
         <h3 className="text-2xl mt-12 font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-6">
           Profile Details
         </h3>
 
-      <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-md dark:border dark:border-[var(--color-border-dark)] p-6">
+      <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-md dark:border dark:border-[var(--color-border-dark)] px-6 py-8">
       <div className="flex-1 space-y-4">
         <img
     src={userData?.photo || avatar}
@@ -288,6 +244,30 @@ const handleImageChange = async (e) => {
 
         </EditProfileModal>
       </div>
+       <section className="pt-8">
+      <h2 className="text-2xl font-semibold mb-6">Quick Navigation</h2>
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 ">
+        {cards.map((card, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-6 rounded-2xl shadow-md hover:shadow-lg transition"
+          >
+            <Link to={card.path} className="flex flex-col items-center text-center space-y-3">
+              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-full">
+                {card.icon}
+              </div>
+              <h3 className="text-lg font-medium">{card.title}</h3>
+              <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
+                {card.description}
+              </p>
+            </Link>
+          </motion.div>
+
+        ))}
+      </div>
+      </section>
     </div>
   );
 };
