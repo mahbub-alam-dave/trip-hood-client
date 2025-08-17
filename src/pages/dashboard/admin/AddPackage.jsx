@@ -4,6 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { FaPlus, FaTrash, FaUpload } from "react-icons/fa";
+import createAnimation from '../../../assets/Share.json'
+import Lottie from "lottie-react";
 
 const AddPackage = () => {
   const { register, handleSubmit, control, reset } = useForm({
@@ -85,9 +87,10 @@ const AddPackage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto  pt-8">
-      <h2 className="text-2xl lg:text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] lg:text-center">Add New Tour Package</h2>
-    <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-8 shadow rounded-2xl shadow-gray-300">
+    <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+    <div className="pt-8">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">Add A New Tour Package</h2>
+    <div className="bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] p-8 shadow rounded-2xl ">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Title */}
         <div>
@@ -204,6 +207,10 @@ const AddPackage = () => {
         </button>
 
       </form>
+    </div>
+    </div>
+    <div className="-order-1 lg:order-1 w-[70%] lg:w-full justify-self-center">
+      <Lottie animationData={createAnimation} loop={true}/>
     </div>
     </div>
   );

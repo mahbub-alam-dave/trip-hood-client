@@ -5,6 +5,8 @@ import { Dialog } from "@headlessui/react";
 import { useMutation } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { ContextValues } from "../../../utility/contexts/ContextValue";
+import JoinAnimation from "../../../assets/Online Work.json"
+import Lottie from "lottie-react";
 
 const BecomeGuide = () => {
   
@@ -35,8 +37,9 @@ const BecomeGuide = () => {
   };
 
   return (
-    <div className=" max-w-3xl mx-auto pt-10">
-      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 text-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+    <div className=" pt-8">
+      <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)] mb-8 ">
         Become a Tour Guide
       </h1>
 
@@ -105,6 +108,10 @@ const BecomeGuide = () => {
           </Dialog.Panel>
         </div>
       </Dialog>
+    </div>
+    <div className="-order-1 lg:order-1 w-[70%] lg:w-full justify-self-center">
+              <Lottie animationData={JoinAnimation} loop={true}/>
+            </div>
     </div>
   );
 };

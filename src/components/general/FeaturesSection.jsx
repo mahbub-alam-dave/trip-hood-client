@@ -35,7 +35,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-16">
+    <section className="bg-gray-100 dark:bg-[#141414] py-20 my-16">
       <div className="max-w-7xl mx-auto px-6 text-center text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         <div className="mb-12 space-y-4">
         <h2 className="text-2xl md:text-3xl font-bold">Latest Features</h2>
@@ -51,7 +51,7 @@ const FeaturesSection = () => {
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className=" text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
+              <p className="max-w-[300px] w-full text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
                 {feature.description}
               </p>
             </div>

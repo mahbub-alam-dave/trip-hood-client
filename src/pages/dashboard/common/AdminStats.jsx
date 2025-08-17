@@ -97,20 +97,22 @@ const AdminStats = () => {
           Visual Overview
         </h3>
       <div className="p-5 rounded-xl shadow-md bg-white dark:bg-[var(--color-bg-primary-dark)] dark:border dark:border-[var(--color-border-dark)]">
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={450}>
           <BarChart data={chartData}>
             <XAxis dataKey="label" stroke="#8884d8" />
             <YAxis />
             <Tooltip
+            cursor={{ fill: "transparent" }}
               contentStyle={{
                 backgroundColor: "var(--color-primary)",
                 borderRadius: "4px",
                 border: "none",
-                color: "#000",
+                color: "var(--color-text-primary-two)",
               }}
               labelStyle={{ color: "#fff" }}
+              itemStyle={{ color: "#fff" }} 
             />
-            <Bar dataKey="chartValue">
+            <Bar dataKey="chartValue" activeBar={false}>
               {chartData.map((entry, index) => (
                 <Cell key={index} fill={entry.color} />
               ))}

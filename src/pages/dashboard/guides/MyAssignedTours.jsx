@@ -66,7 +66,7 @@ const MyAssignedTours = () => {
 
       <div className="overflow-x-auto rounded-lg shadow border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
         <table className="w-full table-auto border-collapse">
-          <thead className="bg-[var(--color-secondary)] dark:bg-[var(--color-secondary-dark)] ">
+          <thead className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-primary-two)]">
             <tr>
               <th className="px-4 py-3">Package</th>
               <th className="px-4 py-3">Tourist</th>
@@ -77,7 +77,7 @@ const MyAssignedTours = () => {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
             {assignedTours.map((booking) => (
               <tr key={booking._id} className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] text-center">
                 <td className="px-4 py-3 font-medium">{booking.destination}</td>

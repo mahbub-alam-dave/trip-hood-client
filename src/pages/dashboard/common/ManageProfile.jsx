@@ -181,7 +181,7 @@ const handleImageChange = async (e) => {
         </h3>
 
       <div className="flex flex-col sm:flex-row gap-6 justify-between items-start bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] rounded-lg shadow-md dark:border dark:border-[var(--color-border-dark)] px-6 py-8">
-      <div className="flex-1 space-y-4">
+      <div className="flex-1 space-y-4 text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] ">
         <img
     src={userData?.photo || avatar}
     alt="Profile"

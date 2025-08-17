@@ -10,12 +10,16 @@ import {ContextValues} from "../utility/contexts/ContextValue"
 import useUserRole from "../utility/hooks/useUserRole"
 import useThemeMode from "../utility/hooks/useThemeMode"
 import Footer from "../components/sharedComponents/Footer"
+import ToggleIcon from "../components/sharedComponents/header/ToggleIcon";
+import Loading from "../components/sharedComponents/Loading";
 
 
 
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const {loading} = useContext(ContextValues)
 
   const {role, roleLoading} = useUserRole()
   const {signOutUser} = useContext(ContextValues)
@@ -71,6 +75,10 @@ const DashboardLayout = () => {
   }
 
   return (
+    <div>
+      {
+        loading ? <Loading />
+        :
     <div className="min-h-screen bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)] text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
       <div className="flex justify-center">
         {/* Wrapper with max width (entire dashboard incl. sidebar) */}
@@ -90,7 +98,8 @@ const DashboardLayout = () => {
             </Link>
 
             <nav className="flex flex-col gap-6">
-              {navLinks.map(link => (
+
+              {!roleLoading && role === "admin" && AdminLinks.map(link => (
                 <NavLink
                   key={link.to}
                   to={link.to}
@@ -122,7 +131,8 @@ const DashboardLayout = () => {
                 </NavLink>
               ))}
 
-              {!roleLoading && role === "admin" && AdminLinks.map(link => (
+
+              {!roleLoading && role === "tourist" && touristLinks.map(link => (
                 <NavLink
                   key={link.to}
                   to={link.to}
@@ -138,7 +148,7 @@ const DashboardLayout = () => {
                 </NavLink>
               ))}
 
-              {!roleLoading && role === "tourist" && touristLinks.map(link => (
+              {navLinks.map(link => (
                 <NavLink
                   key={link.to}
                   to={link.to}
@@ -161,6 +171,7 @@ const DashboardLayout = () => {
                 <FaSignOutAlt />
                 <span className="text-base font-medium">Logout</span>
               </button>
+              <ToggleIcon />
             </nav>
           </div>
 
@@ -196,6 +207,8 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
+    </div>
+      }
     </div>
   );
 };

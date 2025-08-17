@@ -84,3 +84,10 @@ html, body {
     }
   }
 }
+
+/* chart  */
+.recharts-wrapper:focus,
+.recharts-surface:focus,
+.recharts-rectangle:focus {
+  outline: none;
+}

@@ -8,7 +8,7 @@ function classNames(...classes) {
 
 const TabsSection = () => {
   return (
-    <div className="max-w-7xl mx-auto pt-24 px-4  sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Tab.Group>
         <Tab.List className="flex space-x-2 mb-8">
           <Tab

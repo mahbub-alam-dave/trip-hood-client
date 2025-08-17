@@ -5,6 +5,8 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners"; // loader spinner
 import { ContextValues } from "../../../utility/contexts/ContextValue";
 import { useNavigate } from "react-router";
+import createAnimation from "../../../assets/Share.json"
+import Lottie from "lottie-react";
 
 export default function AddStoryPage() {
   const { user } = useContext(ContextValues);
@@ -18,25 +20,6 @@ export default function AddStoryPage() {
   } = useForm();
   const [images, setImages] = useState([]);
 
-  // Image upload handler
-/*   const handleImageUpload = async (e) => {
-    const image = e.target.files[0];
-    if (!image) return;
-
-    const formData = new FormData();
-    formData.append("image", image);
-
-    try {
-      const res = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgbb_url}`,
-        formData
-      );
-      setImages(res.data.data.display_url);
-    } catch (error) {
-      console.error(error);
-      Swal.fire("Failed!", "Image upload failed.", "error");
-    }
-  }; */
 
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];
@@ -106,8 +89,9 @@ export default function AddStoryPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto pt-8">
-      <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
+    <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+    <div className="pt-8">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-8 text-[var(--color-text-primary)] dark:text-[var(--color-text-primary-two)]">
         Share Your Travel Story
       </h2>
 
@@ -239,6 +223,10 @@ export default function AddStoryPage() {
           Submit Story
         </button>
       </form>
+    </div>
+        <div className="-order-1 lg:order-1 w-[70%] lg:w-full justify-self-center">
+          <Lottie animationData={createAnimation} loop={true}/>
+        </div>
     </div>
   );
 }
